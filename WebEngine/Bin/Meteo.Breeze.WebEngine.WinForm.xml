@@ -1,0 +1,339 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meteo.Breeze.WebEngine.WinForm</name>
+    </assembly>
+    <members>
+        <member name="T:Meteo.Breeze.WebEngine.WinForm.ImageProvider">
+            <summary>
+            基本图片素材提供者
+            </summary>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.WinForm.ImageProvider.ArrowDown">
+            <summary>
+            我是一个向上的箭头
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.ImageProvider.ArrowDown.Create">
+            <summary>
+            创建
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.WinForm.ImageProvider.ArrowUp">
+            <summary>
+            我是一个向下的箭头
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.ImageProvider.ArrowUp.Create">
+            <summary>
+            创建
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.WinForm.ImageProvider.Cross">
+            <summary>
+            我是一个叉
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.ImageProvider.Cross.Create">
+            <summary>
+            创建
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.WinForm.FindToolbar">
+            <summary>
+            浏览器框架内容查找工具栏
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.#ctor(Meteo.Breeze.WebEngine.WinForm.WebWindow)">
+            <summary>
+            浏览器框架内容查找工具栏
+            </summary>
+            <param name="window">浏览器窗体对象</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.Initialize">
+            <summary>
+            工具栏初始化
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.InitializeByControl">
+            <summary>
+            基本控件初始化
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            窗体重绘事件
+            </summary>
+            <param name="e">传递事件</param>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.WinForm.FindToolbar.Visible">
+            <summary>
+            是否显示浏览器框架内容查找工具栏
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.OnGotFocus(System.EventArgs)">
+            <summary>
+            焦点获得时
+            </summary>
+            <param name="e">传递事件</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.txtContent_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            内容查找文本框变更事件
+            </summary>
+            <param name="sender">传递对象</param>
+            <param name="e">传递事件</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.txtContent_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            内容查找文本框键盘操作事件
+            </summary>
+            <param name="sender">传递对象</param>
+            <param name="e">传递事件</param>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.FindToolbar._currentWindow">
+            <summary>
+            当前的浏览器窗体对象
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.FindToolbar._btnNext">
+            <summary>
+            下一个按钮
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.FindToolbar._btnPrev">
+            <summary>
+            上一个按钮
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.FindToolbar._btnMatchCase">
+            <summary>
+            是否区分大小写按钮
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.FindToolbar._btnClose">
+            <summary>
+            工具栏关闭按钮
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.FindToolbar._txtContent">
+            <summary>
+            内容查找文本框
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.FindToolbar._lblResult">
+            <summary>
+            查找结果显示标签
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.FindToolbar._tipFindbar">
+            <summary>
+            工具栏提示信息对象
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.FindToolbar._lastFindId">
+            <summary>
+            末次查找到的 ID
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.FindToolbar._matchCase">
+            <summary>
+            是否区分大小写
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.FindToolbar._autoSearchSuspended">
+            <summary>
+            是否暂停自动搜索
+            </summary>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.WinForm.FindToolbar.CloseButtonVisible">
+            <summary>
+            是否显示关闭按钮
+            </summary>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.WinForm.FindToolbar.MatchCase">
+            <summary>
+            是否区分大小写
+            </summary>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.WinForm.FindToolbar.FindText">
+            <summary>
+            文本框中的查找内容
+            </summary>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.WinForm.FindToolbar.FindTextSelectionStart">
+            <summary>
+            查找文本框中选择的文本的起始点
+            </summary>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.WinForm.FindToolbar.FindTextSelectionLength">
+            <summary>
+            查找文本框中选择的字符数
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.BeginInvoke(System.Windows.Forms.MethodInvoker)">
+            <summary>
+            开始调用
+            </summary>
+            <param name="method">需要调用的方法</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.Find(System.Boolean)">
+            <summary>
+            内容查找
+            </summary>
+            <param name="forward">是否向前查找</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.ConfigToolTip(System.String,System.Windows.Forms.Button)">
+            <summary>
+            设置工具栏按钮提示信息
+            </summary>
+            <param name="text">提示信息</param>
+            <param name="btn">工具栏按钮</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.UpdateMatchInfo(System.Int32)">
+            <summary>
+            更新匹配到的数量信息
+            </summary>
+            <param name="count">匹配数量</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.ChangeMatchCase">
+            <summary>
+            区分大小写状态变更事件
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.SetButtonStyle(System.Windows.Forms.Button)">
+            <summary>
+            设置按钮样式
+            </summary>
+            <param name="btn">工具栏按钮</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.SendMessage(System.IntPtr,System.Int32,System.Int32,System.String)">
+            <summary>
+            将指定的消息发送到一个或多个窗口
+            </summary>
+            <param name="hWnd">接收消息的窗口的句柄号</param>
+            <param name="Msg">被发送的消息</param>
+            <param name="wParam">附加的消息特定信息</param>
+            <param name="lParam">附加的消息特定信息</param>
+            <returns>消息处理的结果</returns>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.Search(System.String)">
+            <summary>
+            设置查找文本框中的文本并执行搜索
+            </summary>
+            <param name="text">需要查找的内容</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.SetSearchText(System.String)">
+            <summary>
+            设置查找文本框中的文本并执行搜索
+            </summary>
+            <param name="text">需要查找的内容</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.FindToolbar.FocusFindText">
+            <summary>
+            将输入焦点设置为查找文件框
+            </summary>
+            <returns>焦点设置结果</returns>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.WinForm.WebWindow">
+            <summary>
+            Web Window
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.WebWindow.#ctor">
+            <summary>
+            Web Window
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.WebWindow.OnResize(System.EventArgs)">
+            <summary>
+            窗体大小改变事件
+            </summary>
+            <param name="e">传递事件</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.WebWindow.ResizeWebWindow">
+            <summary>
+            浏览器窗体大小改变事件
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.WebWindow._currentBrowserWindow">
+            <summary>
+            当前的 Web Browser Window
+            </summary>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.WinForm.WebWindow.BrowserWindow">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.WebWindow._findId">
+            <summary>
+            当前匹配的 Id
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.WebWindow._currentFindText">
+            <summary>
+            查找内容
+            <para>当前的</para>
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.WebWindow._currentMatchCase">
+            <summary>
+            是否区分大小写
+            <para>当前的</para>
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.WinForm.WebWindow._findToolbar">
+            <summary>
+            浏览器框架内容查找工具栏对象
+            </summary>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.WinForm.WebWindow.FindToolbar">
+            <summary>
+            浏览器框架内容查找工具栏对象
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.WebWindow.Find(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            浏览器框架内容查找
+            </summary>
+            <param name="searchText">要查找的内容</param>
+            <param name="forward">是否查找上一个</param>
+            <param name="matchCase">是否区分大小写</param>
+            <returns>匹配的 Id</returns>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.WebWindow.Find(System.String,System.Boolean)">
+            <summary>
+            浏览器框架内容查找
+            </summary>
+            <param name="searchText">要查找的内容</param>
+            <param name="forward">是否查找上一个</param>
+            <returns>匹配的 Id</returns>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.WebWindow.Find(System.String)">
+            <summary>
+            浏览器框架内容查找
+            </summary>
+            <param name="searchText">要查找的内容</param>
+            <returns>匹配的 Id</returns>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.WinForm.WebWindowFactory">
+            <summary>
+            浏览器窗口创建工厂类
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.WebWindowFactory.GetBrowserWindow(System.IntPtr,System.Int32,System.Int32,System.String)">
+            <summary>
+            获得一个浏览器窗口对象
+            </summary>
+            <param name="formHandle">当前承载浏览器窗口的 Form 窗体的句柄号(Handle)</param>
+            <param name="defWidth">宽度</param>
+            <param name="defHeight">高度</param>
+            <param name="initialUrl">初始超链接</param>
+            <returns>浏览器窗口</returns>
+        </member>
+    </members>
+</doc>

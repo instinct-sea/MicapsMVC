@@ -1,0 +1,481 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Meteo.Breeze.WebEngine.ChromiumFx</name>
+    </assembly>
+    <members>
+        <member name="T:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper">
+            <summary>
+            启动加载器[引导程序]
+            </summary>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.Current">
+            <summary>
+            当前的启动加载器[引导程序]
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper._basePath">
+            <summary>
+            CEF 框架文件基路径
+            </summary>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.IsStarted">
+            <summary>
+            启动是否完成
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.Start">
+            <summary>
+            启动
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.Stop">
+            <summary>
+            停止
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.ChromiumFx_OnBeforeCfxInitialize(System.Object,Meteo.Breeze.WebEngine.ChromiumFx.OnBeforeCfxInitializeEventArgs)">
+            <summary>
+            在浏览器初始化之前执行事件
+            </summary>
+            <param name="sender">传递对象</param>
+            <param name="e">浏览器初始化之前执行事件参数</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.ChromiumFx_OnBeforeCommandLineProcessing(System.Object,Chromium.Event.CfxOnBeforeCommandLineProcessingEventArgs)">
+            <summary>
+            在浏览器命令行处理之前执行事件
+            </summary>
+            <param name="sender">传递对象</param>
+            <param name="e">浏览器命令行处理事件参数</param>
+        </member>
+        <member name="E:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.OnBeforeCfxInitialize">
+            <summary>
+            在浏览器初始化之前执行回调事件
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.RaiseOnBeforeCfxInitialize(Chromium.CfxSettings,Chromium.CfxBrowserProcessHandler)">
+            <summary>
+            执行浏览器初始化之前回调事件
+            </summary>
+            <param name="settings">全局参数设置</param>
+            <param name="processHandler">浏览器进程处理</param>
+        </member>
+        <member name="E:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.OnBeforeCommandLineProcessing">
+            <summary>
+            在浏览器命令行处理之前执行回调事件
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.RaiseOnBeforeCommandLineProcessing(Chromium.Event.CfxOnBeforeCommandLineProcessingEventArgs)">
+            <summary>
+            执行浏览器命令行处理之前执行回调事件
+            </summary>
+            <param name="e">浏览器命令行处理事件参数</param>
+        </member>
+        <member name="E:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.OnRegisterCustomSchemes">
+            <summary>
+            浏览器自定义方案注册回调事件
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.RaiseOnRegisterCustomSchemes(Chromium.Event.CfxOnRegisterCustomSchemesEventArgs)">
+            <summary>
+            执行浏览器自定义方案注册回调事件
+            </summary>
+            <param name="e">浏览器自定义方案注册事件参数</param>
+        </member>
+        <member name="E:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.RemoteProcessCreated">
+            <summary>
+            渲染进程远程创建回调事件
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.RaiseRemoteProcessCreated(Chromium.Remote.CfrRenderProcessHandler)">
+            <summary>
+            执行渲染进程远程创建回调事件
+            </summary>
+            <param name="renderProcessHandler">渲染进程</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.Bootstrapper.Initialize">
+            <summary>
+            执行浏览器进程初始化工作
+            </summary>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.ChromiumFx.ChromiumFxExtensions">
+            <summary>
+            ChromiumFx Builder 模式扩展类
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.ChromiumFxExtensions.UseChromiumFx(Meteo.Breeze.Hosting.IWebHostBuilder)">
+            <summary>
+            WEB Engine 将采用基于 CEF 框架的 ChromiumFx 实现
+            </summary>
+            <param name="builder">The IWebHostBuilder object.</param>
+            <returns>IWebHostBuilder object.</returns>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.ChromiumFx.BrowserWindowCache">
+            <summary>
+            类文件功能说明。
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.BrowserWindowCache.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.BrowserClient">
+            <summary>
+            浏览器客户端事件处理类
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.BrowserClient.#ctor(Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow)">
+            <summary>
+            浏览器客户端事件处理类
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.BrowserClient._browserWindow">
+            <summary>
+            浏览器窗口常用操作对象
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.BrowserClient._lifeSpanHandler">
+            <summary>
+            浏览器生命周期事件处理对象
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.BrowserClient._findHandler">
+            <summary>
+            浏览器框架内容查找结果事件
+            </summary>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.BrowserProcess">
+            <summary>
+            浏览器进程
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.BrowserProcess.app">
+            <summary>
+            CfxApp
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.BrowserProcess.processHandler">
+            <summary>
+            浏览器进程处理
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.BrowserProcess.initialized">
+            <summary>
+            初始化是否完成
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.BrowserProcess.Initialize">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.LifeSpanHandler">
+            <summary>
+            浏览器生命周期事件处理类
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.LifeSpanHandler.#ctor(Meteo.Breeze.WebEngine.ChromiumFx.FxCore.BrowserClient)">
+            <summary>
+            浏览器生命周期事件处理类
+            </summary>
+            <param name="client">浏览器客户端事件处理对象</param>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.LifeSpanHandler._currentClient">
+            <summary>
+            浏览器客户端事件处理对象
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.FxCore.LifeSpanHandler.LifeSpanHandler_OnAfterCreated(System.Object,Chromium.Event.CfxOnAfterCreatedEventArgs)">
+            <summary>
+            浏览器创建后执行事件
+            </summary>
+            <param name="sender">传递对象</param>
+            <param name="e">传递事件</param>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.ChromiumFx.OnBeforeCfxInitializeEventArgs">
+            <summary>
+            浏览器初始化之前执行事件参数类
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.OnBeforeCfxInitializeEventArgs.#ctor(Chromium.CfxSettings,Chromium.CfxBrowserProcessHandler)">
+            <summary>
+            浏览器初始化之前执行事件参数类
+            </summary>
+            <param name="settings">全局参数设置</param>
+            <param name="processHandler">浏览器进程处理</param>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.ChromiumFx.OnBeforeCfxInitializeEventArgs.Settings">
+            <summary>
+            全局参数设置
+            </summary>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.ChromiumFx.OnBeforeCfxInitializeEventArgs.ProcessHandler">
+            <summary>
+            浏览器进程处理
+            </summary>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.ChromiumFx.RemoteProcessCreatedEventArgs">
+            <summary>
+            远程进程创建事件参数类
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.RemoteProcessCreatedEventArgs.#ctor(Chromium.Remote.CfrRenderProcessHandler)">
+            <summary>
+            远程进程创建事件参数类
+            </summary>
+            <param name="renderProcessHandler">渲染进程处理</param>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.ChromiumFx.RemoteProcessCreatedEventArgs.RenderProcessHandler">
+            <summary>
+            渲染进程处理
+            </summary>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser">
+            <summary>
+            浏览器常用操作类
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser.#ctor(Chromium.CfxBrowser,Chromium.CfxBrowserHost)">
+            <summary>
+            浏览器常用操作类
+            </summary>
+            <param name="browser"></param>
+            <param name="browserHost"></param>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser._currentBrowser">
+            <summary>
+            当前的浏览器对象
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser._currentHost">
+            <summary>
+            当前的浏览器主机对象
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser._currentMainFrame">
+            <summary>
+            当前的浏览器主框架对象
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser.GoBack">
+            <summary>
+            向后导航
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser.GoForward">
+            <summary>
+            向前导航
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser.Reload">
+            <summary>
+            重新加载当前页面
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser.ReloadIgnoreCache">
+            <summary>
+            重新加载当前页面，并忽略任何缓存数据
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser.ExecuteJavaScript(System.String)">
+            <summary>
+            执行 JavaScript 脚本
+            </summary>
+            <param name="javascriptString">JavaScript 脚本字符串</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser.LoadString(System.String,System.String)">
+            <summary>
+            加载指定的字符串文本内容并展示
+            </summary>
+            <param name="stringValue">字符串文本内容</param>
+            <param name="urlString">URL超链接</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser.LoadURL(System.String)">
+            <summary>
+            加载指定的URL超链接并展示
+            </summary>
+            <param name="urlString">URL超链接</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser.ViewSource">
+            <summary>
+            显示当前框架的 HTML 源代码
+            </summary>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow">
+            <summary>
+            浏览器窗口常用操作类
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.#ctor(System.Int32,System.Int32,System.String)">
+            <summary>
+            浏览器窗口常用操作类
+            </summary>
+            <param name="defWidth">默认宽度</param>
+            <param name="defHeight">默认高度</param>
+            <param name="initialUrl">初始的超链接，默认为空白页</param>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow._currentWidth">
+            <summary>
+            当前浏览器控件宽度
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow._currentHeight">
+            <summary>
+            当前浏览器控件高度
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow._currentBrowser">
+            <summary>
+            当前的浏览器对象
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow._currentHost">
+            <summary>
+            当前的浏览器主机对象
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow._currentHandler">
+            <summary>
+            当前的浏览器  Win32 窗口句柄号
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow._browserClient">
+            <summary>
+            浏览器客户端事件处理对象
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.OnBrowserCreated(Chromium.Event.CfxOnAfterCreatedEventArgs)">
+            <summary>
+            浏览器创建结果
+            </summary>
+            <param name="e">传递事件</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.OnFound(Chromium.Event.CfxFindHandlerOnFindResultEventArgs)">
+            <summary>
+            浏览器框架内容查找结果
+            </summary>
+            <param name="e">传递事件</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.SetWindowLong(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            更改指定窗口的属性
+            <para>该函数还将指定偏移处的32位（长）值设置到额外窗口存储器中</para>
+            </summary>
+            <param name="hWnd">窗口句柄号</param>
+            <param name="nIndex">要设置的值的从零开始的偏移量</param>
+            <param name="dwNewLong">指定的替换值</param>
+            <returns>如果函数成功，返回值是指定的32位整数的原来的值。如果函数失败，返回值为0。</returns>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.SetWindowPos(System.IntPtr,System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            设定窗口的位置、大小和Z序(Z序)
+            </summary>
+            <param name="hWnd">窗口句柄号</param>
+            <param name="hWndInsertAfter">用于标识在z-顺序的此 CWnd 对象之前的 CWnd 对象</param>
+            <param name="X">以客户坐标指定窗口新位置的左边界</param>
+            <param name="Y">以客户坐标指定窗口新位置的顶边界</param>
+            <param name="cx">以像素指定窗口的新的宽度</param>
+            <param name="cy">以像素指定窗口的新的高度</param>
+            <param name="uFlags">窗口尺寸和定位的标志</param>
+            <returns>如果函数成功，返回值为非零；如果函数失败，返回值为零。</returns>
+        </member>
+        <member name="E:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.FindHandler">
+            <summary>
+            浏览器框架内容查找事件
+            </summary>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.IsBrowserCreated">
+            <summary>
+            浏览器是否创建
+            </summary>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.WindowHandle">
+            <summary>
+            浏览器 Win32 窗口句柄号
+            </summary>
+        </member>
+        <member name="P:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.Browser">
+            <summary>
+            浏览器常用操作对象
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.CloseBrowser(System.Boolean)">
+            <summary>
+            关闭浏览器
+            </summary>
+            <param name="isPromptUser">是否提示用户即将关闭浏览器</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.TryCloseBrowser">
+            <summary>
+            关闭浏览器
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.ShowDevTools">
+            <summary>
+            显示开发者调试工具
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.CloseDevTools">
+            <summary>
+            关闭开发者调试工具
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.OnResize(System.Int32,System.Int32)">
+            <summary>
+            窗口大小发生变化时
+            </summary>
+            <param name="width">宽度</param>
+            <param name="height">高度</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.StopFinding(System.Boolean)">
+            <summary>
+            取消当前正在进行的所有搜索。
+            </summary>
+            <param name="clearSelection">是否清空所有选择</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.Find(System.Int32,System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            浏览器框架内容查找
+            </summary>
+            <param name="identifier">查找ID</param>
+            <param name="searchText">要查找的内容</param>
+            <param name="forward">是否查找上一个</param>
+            <param name="matchCase">是否区分大小写</param>
+            <param name="findNext">是否查找下一个</param>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow.Dispose">
+            <summary>
+            资源释放
+            </summary>
+        </member>
+        <member name="T:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserFactory">
+            <summary>
+            浏览器工厂类
+            <para>创建事务</para>
+            <para>操作事务</para>
+            <para>管理事务</para>
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserFactory.CreateBrowser(System.IntPtr,System.Int32,System.Int32,System.String)">
+            <summary>
+            创建一个浏览器窗口
+            </summary>
+            <param name="formHandle">当前承载浏览器窗口的 Form 窗体的句柄号(Handle)</param>
+            <param name="defWidth">默认宽度</param>
+            <param name="defHeight">默认高度</param>
+            <param name="initialUrl">初始的超链接，默认为空白页</param>
+            <returns></returns>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserFactory._browsers">
+            <summary>
+            浏览器窗口管理容器
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserFactory.Dispose">
+            <summary>
+            资源释放
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B98C8920-35F9-451E-AA37-44D440568D59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meteo.Breeze.MVC.Routing", "src\Meteo.Breeze.MVC.Routing\Meteo.Breeze.MVC.Routing.csproj", "{B1FA0A36-C72C-4250-A9EC-DBF0119A85C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meteo.Breeze.MVC.Routing.Default", "src\Meteo.Breeze.MVC.Routing.Default\Meteo.Breeze.MVC.Routing.Default.csproj", "{FCC9C408-A465-4944-9315-2A15A62CD6BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meteo.Breeze.MVC.Routing.test", "src\Meteo.Breeze.MVC.Routing.test\Meteo.Breeze.MVC.Routing.test.csproj", "{92F352B0-ECC4-4536-9194-50E5E5459B80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1FA0A36-C72C-4250-A9EC-DBF0119A85C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1FA0A36-C72C-4250-A9EC-DBF0119A85C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1FA0A36-C72C-4250-A9EC-DBF0119A85C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1FA0A36-C72C-4250-A9EC-DBF0119A85C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCC9C408-A465-4944-9315-2A15A62CD6BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCC9C408-A465-4944-9315-2A15A62CD6BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCC9C408-A465-4944-9315-2A15A62CD6BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCC9C408-A465-4944-9315-2A15A62CD6BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92F352B0-ECC4-4536-9194-50E5E5459B80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92F352B0-ECC4-4536-9194-50E5E5459B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92F352B0-ECC4-4536-9194-50E5E5459B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92F352B0-ECC4-4536-9194-50E5E5459B80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B1FA0A36-C72C-4250-A9EC-DBF0119A85C3} = {B98C8920-35F9-451E-AA37-44D440568D59}
+		{FCC9C408-A465-4944-9315-2A15A62CD6BF} = {B98C8920-35F9-451E-AA37-44D440568D59}
+		{92F352B0-ECC4-4536-9194-50E5E5459B80} = {B98C8920-35F9-451E-AA37-44D440568D59}
+	EndGlobalSection
+EndGlobal

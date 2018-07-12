@@ -1,0 +1,6 @@
+F:\SVN\WebEngine\Http\src\Meteo.Breeze.Http\bin\Debug\Meteo.Breeze.Http.dll
+F:\SVN\WebEngine\Http\src\Meteo.Breeze.Http\bin\Debug\Meteo.Breeze.Http.pdb
+F:\SVN\WebEngine\Http\src\Meteo.Breeze.Http\obj\Debug\Meteo.Breeze.Http.dll
+F:\SVN\WebEngine\Http\src\Meteo.Breeze.Http\obj\Debug\Meteo.Breeze.Http.pdb
+F:\SVN\WebEngine\Http\src\Meteo.Breeze.Http\bin\Debug\Meteo.Common.Types.dll
+F:\SVN\WebEngine\Http\src\Meteo.Breeze.Http\obj\Debug\Meteo.Breeze.Http.csprojResolveAssemblyReference.cache

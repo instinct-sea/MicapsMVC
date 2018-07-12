@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meteo.Breeze.WebEngine", "src\Meteo.Breeze.WebEngine\Meteo.Breeze.WebEngine.csproj", "{F896781A-E7AA-469C-8077-4337B8988DE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meteo.Breeze.WebEngine.ChromiumFx", "src\Meteo.Breeze.WebEngine.ChromiumFx\Meteo.Breeze.WebEngine.ChromiumFx.csproj", "{D828F9F6-0720-4BAD-A744-A375E8624B99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meteo.Breeze.WebEngine.ConsoleApp", "src\Meteo.Breeze.WebEngine.ConsoleApp\Meteo.Breeze.WebEngine.ConsoleApp.csproj", "{D8EF80E8-2ECB-4152-B151-FA31643E80D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meteo.Breeze.WebEngine.WinForm", "src\Meteo.Breeze.WebEngine.WinForm\Meteo.Breeze.WebEngine.WinForm.csproj", "{A5F02C42-A022-46C5-B9B5-CB9FEDC7581D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meteo.Breeze.WebEngine.FormApp", "src\Meteo.Breeze.WebEngine.FormApp\Meteo.Breeze.WebEngine.FormApp.csproj", "{29D13473-018B-4C8E-9403-1646EAFF0013}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F896781A-E7AA-469C-8077-4337B8988DE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F896781A-E7AA-469C-8077-4337B8988DE1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F896781A-E7AA-469C-8077-4337B8988DE1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F896781A-E7AA-469C-8077-4337B8988DE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F896781A-E7AA-469C-8077-4337B8988DE1}.Release|x64.ActiveCfg = Release|Any CPU
+		{F896781A-E7AA-469C-8077-4337B8988DE1}.Release|x86.ActiveCfg = Release|Any CPU
+		{D828F9F6-0720-4BAD-A744-A375E8624B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D828F9F6-0720-4BAD-A744-A375E8624B99}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D828F9F6-0720-4BAD-A744-A375E8624B99}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D828F9F6-0720-4BAD-A744-A375E8624B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D828F9F6-0720-4BAD-A744-A375E8624B99}.Release|x64.ActiveCfg = Release|Any CPU
+		{D828F9F6-0720-4BAD-A744-A375E8624B99}.Release|x86.ActiveCfg = Release|Any CPU
+		{D8EF80E8-2ECB-4152-B151-FA31643E80D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8EF80E8-2ECB-4152-B151-FA31643E80D9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D8EF80E8-2ECB-4152-B151-FA31643E80D9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D8EF80E8-2ECB-4152-B151-FA31643E80D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8EF80E8-2ECB-4152-B151-FA31643E80D9}.Release|x64.ActiveCfg = Release|Any CPU
+		{D8EF80E8-2ECB-4152-B151-FA31643E80D9}.Release|x86.ActiveCfg = Release|Any CPU
+		{A5F02C42-A022-46C5-B9B5-CB9FEDC7581D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F02C42-A022-46C5-B9B5-CB9FEDC7581D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A5F02C42-A022-46C5-B9B5-CB9FEDC7581D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A5F02C42-A022-46C5-B9B5-CB9FEDC7581D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5F02C42-A022-46C5-B9B5-CB9FEDC7581D}.Release|x64.ActiveCfg = Release|Any CPU
+		{A5F02C42-A022-46C5-B9B5-CB9FEDC7581D}.Release|x86.ActiveCfg = Release|Any CPU
+		{29D13473-018B-4C8E-9403-1646EAFF0013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29D13473-018B-4C8E-9403-1646EAFF0013}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{29D13473-018B-4C8E-9403-1646EAFF0013}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{29D13473-018B-4C8E-9403-1646EAFF0013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29D13473-018B-4C8E-9403-1646EAFF0013}.Release|x64.ActiveCfg = Release|Any CPU
+		{29D13473-018B-4C8E-9403-1646EAFF0013}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FDE72279-A727-4C7F-85B8-2D8B8F42CFDD}
+	EndGlobalSection
+EndGlobal

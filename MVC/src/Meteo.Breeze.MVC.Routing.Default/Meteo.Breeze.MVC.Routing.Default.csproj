@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FCC9C408-A465-4944-9315-2A15A62CD6BF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Meteo.Breeze.MVC.Routing.Default</RootNamespace>
+    <AssemblyName>Meteo.Breeze.MVC.Routing.Default</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Meteo.Breeze.Http">
+      <HintPath>..\..\..\Http\bin\Meteo.Breeze.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Meteo.Breeze.MVC.Routing">
+      <HintPath>..\..\Bin\Meteo.Breeze.MVC.Routing.dll</HintPath>
+    </Reference>
+    <Reference Include="Meteo.Common.Types">
+      <HintPath>..\..\..\Common\Bin\Meteo.Common.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actions\ActionContext.cs" />
+    <Compile Include="Actions\AttributeRouteInfo.cs" />
+    <Compile Include="Actions\IActionConstraintMetadata.cs" />
+    <Compile Include="Actions\ParameterDescriptor.cs" />
+    <Compile Include="Activators\ActivatorUtilities.cs" />
+    <Compile Include="Activators\ActivatorUtilitiesConstructorAttribute.cs" />
+    <Compile Include="Activators\ObjectFactory.cs" />
+    <Compile Include="Activators\ParameterDefaultValue.cs" />
+    <Compile Include="Constraints\CompositeRouteConstraint.cs" />
+    <Compile Include="Constraints\OptionalRouteConstraint.cs" />
+    <Compile Include="Constraints\RegexRouteConstraint.cs" />
+    <Compile Include="Actions\ActionDescriptor.cs" />
+    <Compile Include="Controllers\ControllerActionDescriptor.cs" />
+    <Compile Include="Controllers\ControllerContext.cs" />
+    <Compile Include="Controllers\DefaultControllerActivator.cs" />
+    <Compile Include="Controllers\DefaultControllerFactory.cs" />
+    <Compile Include="Controllers\IControllerActivator.cs" />
+    <Compile Include="Controllers\IControllerActivatorProvider.cs" />
+    <Compile Include="Controllers\IControllerFactory.cs" />
+    <Compile Include="Encoding\AllowedCharactersBitmap.cs" />
+    <Compile Include="Encoding\TextEncoder.cs" />
+    <Compile Include="Encoding\TextEncoderSettings.cs" />
+    <Compile Include="Encoding\UnicodeHelpers.cs" />
+    <Compile Include="Encoding\UnicodeRange.cs" />
+    <Compile Include="Encoding\UnicodeRanges.cs" />
+    <Compile Include="Encoding\UrlEncoder.cs" />
+    <Compile Include="Filter\FilterDescriptor.cs" />
+    <Compile Include="Filter\IFilterMetadata.cs" />
+    <Compile Include="Filter\IOrderedFilter.cs" />
+    <Compile Include="Formatters\InputFormatterException.cs" />
+    <Compile Include="HashCodeCombiner.cs" />
+    <Compile Include="IInlineConstraintResolver.cs" />
+    <Compile Include="INamedRouter.cs" />
+    <Compile Include="InlineRouteParameterParser.cs" />
+    <Compile Include="Internal\BufferValue.cs" />
+    <Compile Include="Internal\ClosedGenericMatcher.cs" />
+    <Compile Include="Internal\IControllerPropertyActivatorFactory.cs" />
+    <Compile Include="Internal\ITypeActivatorCache.cs" />
+    <Compile Include="Internal\PathTokenizer.cs" />
+    <Compile Include="Internal\SegmentState.cs" />
+    <Compile Include="Internal\UriBuildingContext.cs" />
+    <Compile Include="IRouteCollection.cs" />
+    <Compile Include="ModelBinding\BindingInfo.cs" />
+    <Compile Include="ModelBinding\BindingSource.cs" />
+    <Compile Include="ModelBinding\CompositeBindingSource.cs" />
+    <Compile Include="ModelBinding\EnumGroupAndName.cs" />
+    <Compile Include="ModelBinding\IBinderTypeProviderMetadata.cs" />
+    <Compile Include="ModelBinding\IBindingSourceMetadata.cs" />
+    <Compile Include="ModelBinding\IModelMetadataProvider.cs" />
+    <Compile Include="ModelBinding\IModelNameProvider.cs" />
+    <Compile Include="ModelBinding\IPropertyFilterProvider.cs" />
+    <Compile Include="ModelBinding\IRequestPredicateProvider.cs" />
+    <Compile Include="ModelBinding\IValueProvider.cs" />
+    <Compile Include="ModelBinding\IValueProviderFactory.cs" />
+    <Compile Include="ModelBinding\MetaData\ModelBindingMessageProvider.cs" />
+    <Compile Include="ModelBinding\MetaData\ModelMetadataIdentity.cs" />
+    <Compile Include="ModelBinding\MetaData\ModelMetadataKind.cs" />
+    <Compile Include="ModelBinding\ModelError.cs" />
+    <Compile Include="ModelBinding\ModelErrorCollection.cs" />
+    <Compile Include="ModelBinding\ModelMetadata.cs" />
+    <Compile Include="ModelBinding\ModelPropertyCollection.cs" />
+    <Compile Include="ModelBinding\ModelStateDictionary.cs" />
+    <Compile Include="ModelBinding\ModelStateEntry.cs" />
+    <Compile Include="ModelBinding\ModelValidationState.cs" />
+    <Compile Include="ModelBinding\TooManyModelErrorsException.cs" />
+    <Compile Include="ModelBinding\Validation\IPropertyValidationFilter.cs" />
+    <Compile Include="ModelBinding\Validation\ValidationEntry.cs" />
+    <Compile Include="ModelBinding\ValueProviderFactoryContext.cs" />
+    <Compile Include="ModelBinding\ValueProviderResult.cs" />
+    <Compile Include="Pool\DefaultPooledObjectPolicy.cs" />
+    <Compile Include="Pool\IPooledObjectPolicy.cs" />
+    <Compile Include="Pool\ObjectPool.cs" />
+    <Compile Include="Pool\ObjectPoolProvider.cs" />
+    <Compile Include="Pool\ObjectPoolProviderExtensions.cs" />
+    <Compile Include="Pool\PooledObjectPolicy.cs" />
+    <Compile Include="Pool\StringBuilderPooledObjectPolicy.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="RouteConstraintBuilder.cs" />
+    <Compile Include="Route.cs" />
+    <Compile Include="RouteBase.cs" />
+    <Compile Include="RouteConstraintMatcher.cs" />
+    <Compile Include="RouteCreationException.cs" />
+    <Compile Include="RouteHandler.cs" />
+    <Compile Include="Template\InlineConstraint.cs" />
+    <Compile Include="Template\RouteTemplate.cs" />
+    <Compile Include="Template\TemplateBinder.cs" />
+    <Compile Include="Template\TemplateMatcher.cs" />
+    <Compile Include="Template\TemplateParser.cs" />
+    <Compile Include="Template\TemplatePart.cs" />
+    <Compile Include="Template\TemplateSegment.cs" />
+    <Compile Include="Template\TemplateValuesResult.cs" />
+    <Compile Include="TypeNameHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir $(SolutionDir)Bin
+copy $(TargetPath) $(SolutionDir)Bin\$(TargetFileName)</PostBuildEvent>
+  </PropertyGroup>
+</Project>

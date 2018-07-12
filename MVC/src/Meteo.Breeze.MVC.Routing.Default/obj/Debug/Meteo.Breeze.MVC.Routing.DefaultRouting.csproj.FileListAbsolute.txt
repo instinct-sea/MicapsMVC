@@ -1,0 +1,9 @@
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.DefaultRouting\obj\Debug\Meteo.Breeze.MVC.Routing.DefaultRouting.csproj.GenerateResource.Cache
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.DefaultRouting\obj\Debug\Meteo.Breeze.MVC.Routing.DefaultRouting.Properties.Resources.resources
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.DefaultRouting\bin\Debug\Meteo.Breeze.MVC.Routing.DefaultRouting.dll
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.DefaultRouting\bin\Debug\Meteo.Breeze.MVC.Routing.DefaultRouting.pdb
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.DefaultRouting\bin\Debug\Meteo.Breeze.Http.dll
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.DefaultRouting\bin\Debug\Meteo.Breeze.MVC.Routing.dll
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.DefaultRouting\obj\Debug\Meteo.Breeze.MVC.Routing.DefaultRouting.dll
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.DefaultRouting\obj\Debug\Meteo.Breeze.MVC.Routing.DefaultRouting.pdb
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.DefaultRouting\obj\Debug\Meteo.Breeze.MVC.Routing.DefaultRouting.csprojResolveAssemblyReference.cache
