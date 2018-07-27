@@ -27,15 +27,14 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 		/// <summary>
 		/// 浏览器常用操作类
 		/// </summary>
-		/// <param name="browser"></param>
-		/// <param name="browserHost"></param>
+		/// <param name="browser">浏览器</param>
+		/// <param name="browserHost">主机</param>
 		internal WebBrowser(CfxBrowser browser, CfxBrowserHost browserHost)
 		{
 			_currentBrowser = browser;
 			_currentHost = browserHost;
 			_currentMainFrame = browser.MainFrame;
 		}
-
 
 		/// <summary>
 		/// 当前的浏览器对象
@@ -49,7 +48,6 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 		/// 当前的浏览器主框架对象
 		/// </summary>
 		private CfxFrame _currentMainFrame;
-
 
 		#region 接口实现[IWebBrowser]
 
@@ -90,7 +88,6 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 
 		#endregion
 
-
 		#region 接口实现[IWebFrame]
 
 		/// <summary>
@@ -108,6 +105,7 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 		/// <param name="urlString">URL超链接</param>
 		public void LoadString(string stringValue, string urlString)
 		{
+			_currentBrowser.StopLoad();
 			_currentMainFrame.LoadString(stringValue, urlString);
 		}
 		/// <summary>
@@ -116,6 +114,7 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 		/// <param name="urlString">URL超链接</param>
 		public void LoadURL(string urlString)
 		{
+			_currentBrowser.StopLoad();
 			_currentMainFrame.LoadUrl(urlString);
 		}
 		/// <summary>

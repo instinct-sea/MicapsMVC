@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Meteo.Breeze.Http.Headers">
+      <HintPath>..\..\..\Http\bin\Meteo.Breeze.Http.Headers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Buffers.4.5.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
@@ -44,12 +47,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BufferedReadStream.cs" />
+    <Compile Include="FileMultipartSection.cs" />
+    <Compile Include="FormMultipartSection.cs" />
     <Compile Include="FormReader.cs" />
     <Compile Include="KeyValueAccumulator.cs" />
     <Compile Include="MultipartBoundary.cs" />
     <Compile Include="MultipartReader.cs" />
     <Compile Include="MultipartReaderStream.cs" />
     <Compile Include="MultipartSection.cs" />
+    <Compile Include="MultipartSectionConverterExtensions.cs" />
+    <Compile Include="MultipartSectionStreamExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryHelpers.cs" />
     <Compile Include="ReasonPhrases.cs" />

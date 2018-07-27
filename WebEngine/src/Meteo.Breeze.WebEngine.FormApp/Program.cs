@@ -18,7 +18,7 @@ namespace Meteo.Breeze.WebEngine.FormApp
 				//处理未捕获的异常
 				Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 				//处理UI线程异常
-				Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
+				Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
 				//处理非UI线程异常
 				AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 				//启用视觉样式
@@ -26,7 +26,9 @@ namespace Meteo.Breeze.WebEngine.FormApp
 				//设置默认的文本渲染兼容方式
 				Application.SetCompatibleTextRenderingDefault(false);
 
-				Application.Run(new frmMain());
+				var frm = new frmMain();
+				frm.Show();
+				Application.Run(frm);
 
 
 				// ********** 方式一 **********

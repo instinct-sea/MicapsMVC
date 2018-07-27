@@ -1,11 +1,10 @@
 ﻿using Meteo.Breeze.Http;
-using Meteo.Breeze.MVC.Routing.Default.Encoding;
+using Meteo.Breeze.MVC.Encodings;
 using Meteo.Breeze.MVC.Routing.Default.Pool;
 using Meteo.Breeze.MVC.Routing.Default.Template;
+using Meteo.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Meteo.Breeze.MVC.Routing.Default
@@ -14,7 +13,7 @@ namespace Meteo.Breeze.MVC.Routing.Default
     {
         private TemplateMatcher _matcher;
         private TemplateBinder _binder=null;
-        //private ILogger _logger;
+        private ILogger _logger;
         //private ILogger _constraintLogger;
 
         public RouteBase(
@@ -82,7 +81,7 @@ namespace Meteo.Breeze.MVC.Routing.Default
             if (!_matcher.TryMatch(requestPath, context.RouteData.Values))
             {
                 // If we got back a null value set, that means the URI did not match
-                return Task.Factory.StartNew(()=> { });
+                return Task.FromResult<int>(0);
             }
 
             // Perf: Avoid accessing dictionaries if you don't need to write to them, these dictionaries are all
@@ -97,9 +96,10 @@ namespace Meteo.Breeze.MVC.Routing.Default
                 context.RouteData.Values,
                 context.HttpContext,
                 this,
-                RouteDirection.IncomingRequest))
-            {
-                return Task.Factory.StartNew(() => { });
+                RouteDirection.IncomingRequest,
+                _logger))
+            {               
+                return Task.FromResult<int>(0);
             }
             ////_logger.MatchedRoute(Name, ParsedTemplate.TemplateText);
 
@@ -124,7 +124,9 @@ namespace Meteo.Breeze.MVC.Routing.Default
                 values.CombinedValues,
                 context.HttpContext,
                 this,
-                RouteDirection.UrlGeneration))
+                RouteDirection.UrlGeneration,
+                _logger
+                ))
             {
                 return null;
             }

@@ -15,7 +15,7 @@
 // 修改内容：
 // ===================================================================
 using Meteo.Breeze.Hosting;
-using Meteo.DependencyInjection;
+using Meteo.Extensions.DependencyInjection;
 
 namespace Meteo.Breeze.WebEngine.ChromiumFx
 {

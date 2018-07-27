@@ -61,7 +61,6 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx.FxCore
 			var settings = new CfxSettings();
 			settings.MultiThreadedMessageLoop = true;
 			settings.NoSandbox = true;
-			settings.SingleProcess = true;
 
 			Bootstrapper.RaiseOnBeforeCfxInitialize(settings, processHandler);
 

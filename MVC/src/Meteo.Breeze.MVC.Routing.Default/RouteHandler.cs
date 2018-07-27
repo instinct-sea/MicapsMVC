@@ -29,7 +29,6 @@ namespace Meteo.Breeze.MVC.Routing.Default
         {
             context.Handler = _requestDelegate;
             return Task.Factory.StartNew(() => { });
-
         }
     }
 }

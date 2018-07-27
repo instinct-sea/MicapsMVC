@@ -17,6 +17,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using Meteo.Extensions.DependencyInjection;
+using Meteo.Extensions.Logging;
 
 namespace Meteo.Breeze.Server.Simple
 {
@@ -30,7 +31,11 @@ namespace Meteo.Breeze.Server.Simple
                 var serverOptions = new ServerOptions();
                 serverOptions.Listen(new IPEndPoint(address, port));
                 var transportFactory = new HttpListenerTransportFactory();
-                services.AddSingleton<IServer>(new Server(serverOptions, transportFactory));
+                services.AddSingleton<IServer>(serviceProvider=>
+                {
+                    var logger = serviceProvider.GetService<ILoggingService>();
+                    return new Server(serverOptions, transportFactory, serviceProvider, logger);
+                });
             });
         }
     }

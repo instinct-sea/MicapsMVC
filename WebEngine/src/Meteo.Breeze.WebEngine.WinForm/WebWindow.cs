@@ -29,7 +29,33 @@ namespace Meteo.Breeze.WebEngine.WinForm
 		/// </summary>
 		public WebWindow()
 		{
-			_currentBrowserWindow = WebWindowFactory.GetBrowserWindow(Handle, Width, Height);
+			BrowserWindow = WebWindowFactory.GetBrowserWindow(this.Handle, Width, Height);
+
+			if (BrowserWindow.IsBrowserCreated)
+			{
+
+				SetStyle(ControlStyles.ContainerControl
+					| ControlStyles.ResizeRedraw
+					| ControlStyles.FixedWidth
+					| ControlStyles.FixedHeight
+					| ControlStyles.StandardClick
+					| ControlStyles.StandardDoubleClick
+					| ControlStyles.UserMouse
+					| ControlStyles.SupportsTransparentBackColor
+					| ControlStyles.EnableNotifyMessage
+					| ControlStyles.DoubleBuffer
+					| ControlStyles.OptimizedDoubleBuffer
+					| ControlStyles.UseTextForAccessibility
+					| ControlStyles.Opaque
+					, false);
+
+				SetStyle(ControlStyles.UserPaint
+					| ControlStyles.AllPaintingInWmPaint
+					| ControlStyles.CacheText
+					| ControlStyles.Selectable
+					, true);
+
+			}
 		}
 
 		#region 窗体事件
@@ -70,19 +96,17 @@ namespace Meteo.Breeze.WebEngine.WinForm
 				}
 				h = _findToolbar.Top;
 			}
-			_currentBrowserWindow?.OnResize(Width, h);
+			BrowserWindow?.OnResize(Width, h);
 		}
 
 		#endregion
 
-		/// <summary>
-		/// 当前的 Web Browser Window
-		/// </summary>
-		private IWebBrowserWindow _currentBrowserWindow;
+
 		/// <summary>
 		/// 
 		/// </summary>
-		public IWebBrowserWindow BrowserWindow => _currentBrowserWindow;
+		public IWebBrowserWindow BrowserWindow { get; }
+
 
 		#region 浏览器框架内容查找处理事件
 
@@ -130,7 +154,7 @@ namespace Meteo.Breeze.WebEngine.WinForm
 		/// <returns>匹配的 Id</returns>
 		public int Find(string searchText, bool forward, bool matchCase)
 		{
-			if (!_currentBrowserWindow.IsBrowserCreated) return -1;
+			if (!BrowserWindow.IsBrowserCreated) return -1;
 
 			var findNext = _currentFindText == searchText && _currentMatchCase == matchCase;
 			if (!findNext)
@@ -140,7 +164,7 @@ namespace Meteo.Breeze.WebEngine.WinForm
 				++_findId;
 			}
 
-			_currentBrowserWindow.Find(_findId, searchText, forward, matchCase, findNext);
+			BrowserWindow.Find(_findId, searchText, forward, matchCase, findNext);
 			return _findId;
 		}
 		/// <summary>

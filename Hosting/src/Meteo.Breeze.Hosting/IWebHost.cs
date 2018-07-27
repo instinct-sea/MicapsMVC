@@ -38,13 +38,13 @@ namespace Meteo.Breeze.Hosting
         /// <summary>
         /// Starts webhost with given services.
         /// </summary>
-        Task StartAsync(IServiceProvider applicationServices, CancellationToken cancellationToken = default);
+        Task StartAsync(IServiceProvider applicationServices, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Attempt to gracefully stop the host.
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task StopAsync(CancellationToken cancellationToken = default);
+        Task StopAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }

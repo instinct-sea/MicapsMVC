@@ -81,7 +81,10 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 		/// <param name="e">浏览器初始化之前执行事件参数</param>
 		private void ChromiumFx_OnBeforeCfxInitialize(object sender, OnBeforeCfxInitializeEventArgs e)
 		{
+			CfxRuntime.EnableHighDpiSupport();
+
 			e.Settings.SingleProcess = true;
+			//e.Settings.BrowserSubprocessPath = Path.GetFullPath("ChromiumFXRenderProcess.exe");
 
 			//缓存数据存放位置
 			e.Settings.CachePath = Path.GetFullPath($@"{_basePath}\LocalCache");
@@ -93,7 +96,7 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 			//仅 Windows 操作系统有效
 			e.Settings.MultiThreadedMessageLoop = true;
 			//禁用日志
-			e.Settings.LogSeverity = Chromium.CfxLogSeverity.Disable;
+			e.Settings.LogSeverity = CfxLogSeverity.Disable;
 			//指定中文为当前CEF环境的默认语言
 			e.Settings.AcceptLanguageList = "zh-CN";
 			e.Settings.Locale = "zh-CN";
@@ -108,6 +111,8 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 		/// <param name="e">浏览器命令行处理事件参数</param>
 		private void ChromiumFx_OnBeforeCommandLineProcessing(object sender, CfxOnBeforeCommandLineProcessingEventArgs e)
 		{
+			e.CommandLine.AppendSwitch("disable-gpu");
+
 			//Uses WinHTTP to fetch and evaluate PAC scripts. Otherwise the default is to use Chromium's network stack to fetch, and V8 to evaluate.
 			//https://peter.sh/experiments/chromium-command-line-switches/#winhttp-proxy-resolver
 			e.CommandLine.AppendSwitch("--winhttp-proxy-resolver");

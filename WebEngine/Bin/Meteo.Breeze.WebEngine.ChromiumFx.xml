@@ -240,8 +240,8 @@
             <summary>
             浏览器常用操作类
             </summary>
-            <param name="browser"></param>
-            <param name="browserHost"></param>
+            <param name="browser">浏览器</param>
+            <param name="browserHost">主机</param>
         </member>
         <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowser._currentBrowser">
             <summary>
@@ -323,6 +323,11 @@
         <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow._currentHeight">
             <summary>
             当前浏览器控件高度
+            </summary>
+        </member>
+        <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow._currentURL">
+            <summary>
+            当前浏览器加载的超链接
             </summary>
         </member>
         <member name="F:Meteo.Breeze.WebEngine.ChromiumFx.WebBrowserWindow._currentBrowser">

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meteo.Breeze.WebEngine.WinF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meteo.Breeze.WebEngine.FormApp", "src\Meteo.Breeze.WebEngine.FormApp\Meteo.Breeze.WebEngine.FormApp.csproj", "{29D13473-018B-4C8E-9403-1646EAFF0013}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meteo.Breeze.WebEngine.ChromiumFx.Subprocess", "src\Meteo.Breeze.WebEngine.ChromiumFx.Subprocess\Meteo.Breeze.WebEngine.ChromiumFx.Subprocess.csproj", "{723E9E04-6EC9-455C-95B8-A02B94907CC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,12 @@ Global
 		{29D13473-018B-4C8E-9403-1646EAFF0013}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29D13473-018B-4C8E-9403-1646EAFF0013}.Release|x64.ActiveCfg = Release|Any CPU
 		{29D13473-018B-4C8E-9403-1646EAFF0013}.Release|x86.ActiveCfg = Release|Any CPU
+		{723E9E04-6EC9-455C-95B8-A02B94907CC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{723E9E04-6EC9-455C-95B8-A02B94907CC9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{723E9E04-6EC9-455C-95B8-A02B94907CC9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{723E9E04-6EC9-455C-95B8-A02B94907CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{723E9E04-6EC9-455C-95B8-A02B94907CC9}.Release|x64.ActiveCfg = Release|Any CPU
+		{723E9E04-6EC9-455C-95B8-A02B94907CC9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

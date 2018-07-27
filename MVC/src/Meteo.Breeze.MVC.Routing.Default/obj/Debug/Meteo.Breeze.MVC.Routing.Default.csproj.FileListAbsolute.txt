@@ -7,3 +7,8 @@ F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.Default\bin\Debug\Meteo.Breeze
 F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.Default\bin\Debug\Meteo.Common.Types.dll
 F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.Default\obj\Debug\Meteo.Breeze.MVC.Routing.Default.dll
 F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.Default\obj\Debug\Meteo.Breeze.MVC.Routing.Default.pdb
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.Default\bin\Debug\Meteo.Breeze.Hosting.dll
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.Default\bin\Debug\Meteo.Extensions.DependencyInjection.dll
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.Default\bin\Debug\Meteo.Extensions.Logging.dll
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.Default\bin\Debug\Meteo.Breeze.MVC.Options.dll
+F:\SVN\WebEngine\MVC\src\Meteo.Breeze.MVC.Routing.Default\bin\Debug\Meteo.Breeze.MVC.Encodings.dll

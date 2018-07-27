@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using Meteo.Breeze.Http;
 
-namespace Meteo.Breeze.MVC.Routing.Default
+namespace Meteo.Breeze.MVC.Routing.Default.Constraints
 {
     /// <summary>
     /// Constrains a route by several child constraints.

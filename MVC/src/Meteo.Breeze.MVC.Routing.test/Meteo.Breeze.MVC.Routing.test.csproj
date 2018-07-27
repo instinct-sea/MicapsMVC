@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Meteo.Breeze.Http">
+      <HintPath>..\..\..\Http\bin\Meteo.Breeze.Http.dll</HintPath>
+    </Reference>
     <Reference Include="Meteo.Breeze.MVC.Routing">
       <HintPath>..\..\Bin\Meteo.Breeze.MVC.Routing.dll</HintPath>
     </Reference>

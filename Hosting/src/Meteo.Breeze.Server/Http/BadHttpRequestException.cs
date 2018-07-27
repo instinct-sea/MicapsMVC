@@ -126,7 +126,7 @@ namespace Meteo.Breeze.Server.Simple
             return ex;
         }
 
-        internal static void Throw(RequestRejectionReason reason, in StringValues detail)
+        internal static void Throw(RequestRejectionReason reason, StringValues detail)
         {
             throw GetException(reason, detail.ToString());
         }

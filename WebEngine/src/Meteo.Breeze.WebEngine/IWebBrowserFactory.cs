@@ -15,7 +15,6 @@
 // 修改内容：
 // ===================================================================
 using System;
-using System.Threading.Tasks;
 
 namespace Meteo.Breeze.WebEngine
 {
@@ -34,7 +33,7 @@ namespace Meteo.Breeze.WebEngine
 		/// <param name="defWidth">默认宽度</param>
 		/// <param name="defHeight">默认高度</param>
 		/// <param name="initialUrl">初始的超链接，默认为空白页</param>
-		/// <returns></returns>
+		/// <returns>浏览器窗口常用操作对象</returns>
 		IWebBrowserWindow CreateBrowser(IntPtr formHandle, int defWidth, int defHeight, string initialUrl = "about:blank");
 	}
 }

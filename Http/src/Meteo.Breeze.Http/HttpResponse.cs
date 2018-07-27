@@ -41,6 +41,16 @@ namespace Meteo.Breeze.Http
         public abstract string ContentType { get; set; }
 
         /// <summary>
+        /// Gets an object that can be used to manage cookies for this response.
+        /// </summary>
+        public abstract IResponseCookies Cookies { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether response headers have been sent to the client.
+        /// </summary>
+        public abstract bool HasStarted { get; }
+
+        /// <summary>
         /// Adds a delegate to be invoked just before response headers will be sent to the client.
         /// </summary>
         /// <param name="callback">The delegate to execute.</param>
@@ -52,6 +62,16 @@ namespace Meteo.Breeze.Http
         /// </summary>
         /// <param name="callback">The delegate to execute.</param>
         public virtual void OnStarting(Func<Task> callback) => OnStarting(_=>callback(), null);
+
+        /// <summary>
+        /// Registers an object for disposal by the host once the request has finished processing.
+        /// </summary>
+        /// <param name="disposable">The object to be disposed.</param>
+        public virtual void RegisterForDispose(IDisposable disposable) => OnCompleted(state=>
+        {
+            ((IDisposable)state).Dispose();
+            return Task.FromResult<object>(null);
+        }, disposable);
 
         /// <summary>
         /// Adds a delegate to be invoked after the response has finished being sent to the client.

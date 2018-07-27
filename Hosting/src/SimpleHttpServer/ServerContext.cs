@@ -10,6 +10,7 @@
  * History:  created by sand 7/5/2018 11:03:54 AM
  
  * ***********************************************/
+using Meteo.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,13 @@ namespace Meteo.Breeze.Server.Simple
         public HttpConnectionManager ConnectionManager { get; set; }
 
         public ServerOptions ServerOptions { get; set; }
+
+        public ILoggingService Logger { get; set; }
+
+        internal IServiceProvider ApplicationServices
+        {
+            get;
+            set;
+        }
     }
 }

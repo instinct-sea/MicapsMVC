@@ -45,7 +45,7 @@ namespace Meteo.Breeze.WebEngine.WinForm
 		{
 			InitializeByControl();
 
-			Font = new Font("Microsoft Sans Serif", 10);
+			Font = new Font("微软雅黑", 9);
 
 			SetStyle(ControlStyles.FixedWidth
 				| ControlStyles.FixedHeight
@@ -457,7 +457,7 @@ namespace Meteo.Breeze.WebEngine.WinForm
 			else
 			{
 				_txtContent.BackColor = DefaultBackColor;
-				_txtContent.ForeColor = Color.DimGray;
+				_txtContent.ForeColor = Color.Blue;
 				if (_txtContent.Text.Length > 0)
 				{
 					_lblResult.Text = $"共找到 {count} 个匹配项。";

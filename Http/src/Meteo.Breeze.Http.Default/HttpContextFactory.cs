@@ -30,15 +30,13 @@ namespace Meteo.Breeze.Http.Default
         public HttpContext Create(IFeatureCollection featureCollection)
         {
             var context = new DefaultHttpContext(featureCollection);
-            if (_httpContextAccessor != null)
-                _httpContextAccessor.HttpContext = context;
+            _httpContextAccessor.HttpContext = context;
             return context;
         }
 
         public void Dispose(HttpContext httpContext)
         {
-            if (_httpContextAccessor != null)
-                _httpContextAccessor.HttpContext = null;
+            _httpContextAccessor.HttpContext = null;
         }
     }
 }

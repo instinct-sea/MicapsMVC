@@ -1,4 +1,6 @@
-﻿
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
 using Meteo.Common.Types;
 using System.Collections.Generic;
 using System.IO;
@@ -33,7 +35,7 @@ namespace Meteo.Common.WebUtilities
             }
         }
 
-        public IDictionary<string, StringValues> Headers { get; set; }
+        public Dictionary<string, StringValues> Headers { get; set; }
 
         public Stream Body { get; set; }
 

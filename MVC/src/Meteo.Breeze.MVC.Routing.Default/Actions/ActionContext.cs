@@ -7,7 +7,7 @@ using Meteo.Breeze.MVC.Routing;
 using Meteo.Breeze.MVC.Routing.Default.Actions;
 using Meteo.Breeze.MVC.Routing.Default.ModelBinding;
 
-namespace Microsoft.AspNetCore.Mvc
+namespace Meteo.Breeze.MVC.Routing.Default.ModelBinding
 {
     /// <summary>
     /// Context object for execution of action which has been selected as part of an HTTP request.

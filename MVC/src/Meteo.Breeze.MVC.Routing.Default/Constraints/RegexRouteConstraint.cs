@@ -6,7 +6,7 @@ using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Meteo.Breeze.MVC.Routing.Default
+namespace Meteo.Breeze.MVC.Routing.Default.Constraints
 {
     public class RegexRouteConstraint : IRouteConstraint
     {

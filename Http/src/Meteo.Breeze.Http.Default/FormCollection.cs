@@ -10,6 +10,7 @@
  * History:  created by sand 7/10/2018 3:37:12 PM
  
  * ***********************************************/
+using Meteo.Breeze.Http.Default.Internal;
 using Meteo.Breeze.Http.Features;
 using Meteo.Common.Types;
 using System;
@@ -23,7 +24,22 @@ namespace Meteo.Breeze.Http.Default
     class FormCollection : IFormCollection
     {
         private IDictionary<string, StringValues> _store;
-        private readonly IFormFileCollection _files;
+        private IFormFileCollection _files;
+
+        private static IFormFileCollection EmptyFiles = new FormFileCollection();
+        public static readonly FormCollection Empty = new FormCollection();
+
+        private static readonly IEnumerable<string> EmptyKeys = Enumerable.Empty<string>();
+        private static readonly IEnumerable<StringValues> EmptyValues = Enumerable.Empty<StringValues>();
+        private static readonly Enumerator EmptyEnumerator = new Enumerator();
+        // Pre-box
+        private static readonly IEnumerator<KeyValuePair<string, StringValues>> EmptyIEnumeratorType = EmptyEnumerator;
+        private static readonly IEnumerator EmptyIEnumerator = EmptyEnumerator;
+
+        private FormCollection()
+        {
+            // For static Empty
+        }
 
         public FormCollection(IDictionary<string, StringValues> fields, IFormFileCollection files = null)
         {
@@ -31,32 +47,191 @@ namespace Meteo.Breeze.Http.Default
             _files = files;
         }
 
-        public StringValues this[string key] => _store[key];
+        public IFormFileCollection Files
+        {
+            get
+            {
+                return _files ?? EmptyFiles;
+            }
+            private set { _files = value; }
+        }
 
-        public int Count => _store.Count;
+        private Dictionary<string, StringValues> Store { get; set; }
 
-        public ICollection<string> Keys => _store.Keys;
+        /// <summary>
+        /// Get or sets the associated value from the collection as a single string.
+        /// </summary>
+        /// <param name="key">The header name.</param>
+        /// <returns>the associated value from the collection as a StringValues or StringValues.Empty if the key is not present.</returns>
+        public StringValues this[string key]
+        {
+            get
+            {
+                if (Store == null)
+                {
+                    return StringValues.Empty;
+                }
 
-        public IFormFileCollection Files => _files;
+                StringValues value;
+                if (TryGetValue(key, out value))
+                {
+                    return value;
+                }
+                return StringValues.Empty;
+            }
+        }
 
+        /// <summary>
+        /// Gets the number of elements contained in the <see cref="HeaderDictionary" />;.
+        /// </summary>
+        /// <returns>The number of elements contained in the <see cref="HeaderDictionary" />.</returns>
+        public int Count
+        {
+            get
+            {
+                return Store?.Count ?? 0;
+            }
+        }
+
+        public ICollection<string> Keys
+        {
+            get
+            {
+                if (Store == null)
+                {
+                    return EmptyKeys.ToArray();
+                }
+                return Store.Keys;
+            }
+        }
+
+        /// <summary>
+        /// Determines whether the <see cref="HeaderDictionary" /> contains a specific key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns>true if the <see cref="HeaderDictionary" /> contains a specific key; otherwise, false.</returns>
         public bool ContainsKey(string key)
         {
-            return _store.ContainsKey(key);
+            if (Store == null)
+            {
+                return false;
+            }
+            return Store.ContainsKey(key);
         }
 
-        public IEnumerator<KeyValuePair<string, Meteo.Common.Types.StringValues>> GetEnumerator()
+        /// <summary>
+        /// Retrieves a value from the dictionary.
+        /// </summary>
+        /// <param name="key">The header name.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>true if the <see cref="HeaderDictionary" /> contains the key; otherwise, false.</returns>
+        public bool TryGetValue(string key, out StringValues value)
         {
-            throw new NotImplementedException();
+            if (Store == null)
+            {
+                value = default;
+                return false;
+            }
+            return Store.TryGetValue(key, out value);
         }
 
-        public bool TryGetValue(string key, out Meteo.Common.Types.StringValues value)
+        /// <summary>
+        /// Returns an struct enumerator that iterates through a collection without boxing and is also used via the <see cref="IFormCollection" /> interface.
+        /// </summary>
+        /// <returns>An <see cref="Enumerator" /> object that can be used to iterate through the collection.</returns>
+        public Enumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            if (Store == null || Store.Count == 0)
+            {
+                // Non-boxed Enumerator
+                return EmptyEnumerator;
+            }
+            // Non-boxed Enumerator
+            return new Enumerator(Store.GetEnumerator());
         }
 
+        /// <summary>
+        /// Returns an enumerator that iterates through a collection, boxes in non-empty path.
+        /// </summary>
+        /// <returns>An <see cref="IEnumerator" /> object that can be used to iterate through the collection.</returns>
+        IEnumerator<KeyValuePair<string, StringValues>> IEnumerable<KeyValuePair<string, StringValues>>.GetEnumerator()
+        {
+            if (Store == null || Store.Count == 0)
+            {
+                // Non-boxed Enumerator
+                return EmptyIEnumeratorType;
+            }
+            // Boxed Enumerator
+            return Store.GetEnumerator();
+        }
+
+        /// <summary>
+        /// Returns an enumerator that iterates through a collection, boxes in non-empty path.
+        /// </summary>
+        /// <returns>An <see cref="IEnumerator" /> object that can be used to iterate through the collection.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            if (Store == null || Store.Count == 0)
+            {
+                // Non-boxed Enumerator
+                return EmptyIEnumerator;
+            }
+            // Boxed Enumerator
+            return Store.GetEnumerator();
+        }
+
+        public struct Enumerator : IEnumerator<KeyValuePair<string, StringValues>>
+        {
+            // Do NOT make this readonly, or MoveNext will not work
+            private Dictionary<string, StringValues>.Enumerator _dictionaryEnumerator;
+            private bool _notEmpty;
+
+            internal Enumerator(Dictionary<string, StringValues>.Enumerator dictionaryEnumerator)
+            {
+                _dictionaryEnumerator = dictionaryEnumerator;
+                _notEmpty = true;
+            }
+
+            public bool MoveNext()
+            {
+                if (_notEmpty)
+                {
+                    return _dictionaryEnumerator.MoveNext();
+                }
+                return false;
+            }
+
+            public KeyValuePair<string, StringValues> Current
+            {
+                get
+                {
+                    if (_notEmpty)
+                    {
+                        return _dictionaryEnumerator.Current;
+                    }
+                    return default;
+                }
+            }
+
+            public void Dispose()
+            {
+            }
+
+            object IEnumerator.Current
+            {
+                get
+                {
+                    return Current;
+                }
+            }
+
+            void IEnumerator.Reset()
+            {
+                if (_notEmpty)
+                {
+                    ((IEnumerator)_dictionaryEnumerator).Reset();
+                }
+            }
         }
     }
 }

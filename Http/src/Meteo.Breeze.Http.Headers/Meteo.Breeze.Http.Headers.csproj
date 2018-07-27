@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,6 +35,9 @@
       <HintPath>..\..\..\Common\Bin\Meteo.Common.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Buffers.4.5.0\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,13 +47,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContentDispositionHeaderValue.cs" />
+    <Compile Include="ContentDispositionHeaderValueIdentityExtensions.cs" />
+    <Compile Include="CookieHeaderValue.cs" />
+    <Compile Include="DateTimeFormatter.cs" />
+    <Compile Include="EntityTagHeaderValue.cs" />
     <Compile Include="HeaderNames.cs" />
     <Compile Include="HeaderQuality.cs" />
     <Compile Include="HeaderUtilities.cs" />
+    <Compile Include="HttpHeaderParser.cs" />
     <Compile Include="HttpParseResult.cs" />
     <Compile Include="HttpRuleParser.cs" />
-    <Compile Include="NameValueHeader.cs" />
+    <Compile Include="MediaTypeHeaderValue.cs" />
+    <Compile Include="MediaTypeHeaderValueComparer.cs" />
+    <Compile Include="NameValueHeaderValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SameSiteMode.cs" />
+    <Compile Include="SetCookieHeaderValue.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir $(SolutionDir)Bin
+copy $(TargetPath) $(SolutionDir)Bin\$(TargetFileName)</PostBuildEvent>
+  </PropertyGroup>
 </Project>

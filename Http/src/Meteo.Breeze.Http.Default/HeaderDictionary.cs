@@ -7,8 +7,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Meteo.Breeze.Http.Features;
 using Meteo.Common.Types;
+using Meteo.Breeze.Http.Headers;
 
-namespace Microsoft.AspNetCore.Http
+namespace Meteo.Breeze.Http.Default
 {
     /// <summary>
     /// Represents a wrapper for RequestHeaders and ResponseHeaders.
@@ -147,7 +148,7 @@ namespace Microsoft.AspNetCore.Http
             {
                 if (Store == null)
                 {
-                    return EmptyKeys;
+                    return new string[0];
                 }
                 return Store.Keys;
             }
@@ -159,7 +160,7 @@ namespace Microsoft.AspNetCore.Http
             {
                 if (Store == null)
                 {
-                    return EmptyValues;
+                    return new StringValues[0];
                 }
                 return Store.Values;
             }
@@ -302,7 +303,7 @@ namespace Microsoft.AspNetCore.Http
         {
             if (Store == null)
             {
-                value = default(StringValues);
+                value = default;
                 return false;
             }
             return Store.TryGetValue(key, out value);
@@ -387,7 +388,7 @@ namespace Microsoft.AspNetCore.Http
                     {
                         return _dictionaryEnumerator.Current;
                     }
-                    return default(KeyValuePair<string, StringValues>);
+                    return default;
                 }
             }
 

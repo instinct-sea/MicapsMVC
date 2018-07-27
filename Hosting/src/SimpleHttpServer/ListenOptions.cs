@@ -53,6 +53,7 @@ namespace Meteo.Breeze.Server.Simple
             {
                 return Task.FromResult<object>(null);
             };
+
             for (int i = _connectionDelegates.Count - 1; i >= 0; i--)
             {
                 var component = _connectionDelegates[i];

@@ -39,6 +39,8 @@ namespace Meteo.Breeze.WebEngine.ConsoleApp
 
 		static void ChromiumWebBrowser_OnBeforeCfxInitialize(OnBeforeCfxInitializeEventArgs e)
 		{
+			e.Settings.SingleProcess = true;
+
 			//缓存数据存放位置
 			e.Settings.CachePath = Path.GetFullPath($@"{_basePath}\LocalCache");
 			//启用无窗口渲染

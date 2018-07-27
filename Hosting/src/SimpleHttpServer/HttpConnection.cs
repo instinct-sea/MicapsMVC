@@ -19,6 +19,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Meteo.Extensions.Logging;
 
 namespace Meteo.Breeze.Server.Simple
 {
@@ -29,6 +30,12 @@ namespace Meteo.Breeze.Server.Simple
         private readonly HttpConnectionContext _context;
         private Task _requestLifetimeTask;
         private Exception _applicationException;
+
+        private readonly object _onStartingSync = new Object();
+        private readonly object _onCompletedSync = new Object();
+
+        private Stack<KeyValuePair<Func<object, Task>, object>> _onStarting;
+        private Stack<KeyValuePair<Func<object, Task>, object>> _onCompleted;
 
         public HttpConnection(HttpConnectionContext context)
         {
@@ -53,6 +60,8 @@ namespace Meteo.Breeze.Server.Simple
 
                 var httpContext = application.CreateContext(this);
 
+                _context.ServerContext.Logger.Log("Http context created.", LoggingLevel.Debug);
+
                 try
                 {
                     // Run the application code for this request
@@ -60,6 +69,7 @@ namespace Meteo.Breeze.Server.Simple
                 }
                 catch (Exception e)
                 {
+                    _context.ServerContext.Logger.Log("Application process request failed.", LoggingLevel.Error, e);
                     ReportApplicationError(e);
                     //Unexpect exception occurs while processing http request.
                 }
@@ -69,28 +79,137 @@ namespace Meteo.Breeze.Server.Simple
                     // Using these streams in the OnCompleted callback is not allowed.
                     StopStreams(streams);
 
+                    _context.ServerContext.Logger.Log("Application processing request is completed.", LoggingLevel.Debug);
+
+                    await FireOnCompleted();
+
                     //await connection to close.
                     await _context.ConnectionContext.CloseAsync();
 
+                    _context.ServerContext.Logger.Log("Http connection closed.", LoggingLevel.Debug);
+
                     application.DisposeContext(httpContext, _applicationException);
+
+                    _context.ServerContext.Logger.Log("Http context disposed.", LoggingLevel.Debug);
                 }
             }
             catch(BadHttpRequestException e)
             {
+                _context.ServerContext.Logger.Log("Http bad request!", LoggingLevel.Error, e);
                 //bad http request exception.
             }
             catch(ConnectionResetException e)
             {
+                _context.ServerContext.Logger.Log("Connection reset!", LoggingLevel.Error, e);
                 //connection reset exception.
             }
             catch(Exception ex)
             {
+                _context.ServerContext.Logger.Log("Process request failed!", LoggingLevel.Error, ex);
                 //other request process exception occurs.
             }
             finally
             {
                 this.Reset();
                 OnRequestProcessingEnded();
+            }
+        }
+
+        public void OnStarting(Func<object, Task> callback, object state)
+        {
+            lock (_onStartingSync)
+            {
+                if (HasResponseStarted)
+                {
+                    throw new InvalidOperationException(nameof(OnStarting));
+                }
+
+                if (_onStarting == null)
+                {
+                    _onStarting = new Stack<KeyValuePair<Func<object, Task>, object>>();
+                }
+                _onStarting.Push(new KeyValuePair<Func<object, Task>, object>(callback, state));
+            }
+        }
+
+        public void OnCompleted(Func<object, Task> callback, object state)
+        {
+            lock (_onCompletedSync)
+            {
+                if (_onCompleted == null)
+                {
+                    _onCompleted = new Stack<KeyValuePair<Func<object, Task>, object>>();
+                }
+                _onCompleted.Push(new KeyValuePair<Func<object, Task>, object>(callback, state));
+            }
+        }
+
+        protected Task FireOnStarting()
+        {
+            Stack<KeyValuePair<Func<object, Task>, object>> onStarting;
+            lock (_onStartingSync)
+            {
+                onStarting = _onStarting;
+                _onStarting = null;
+            }
+
+            if (onStarting == null)
+            {
+                return Task.FromResult<object>(null);
+            }
+            else
+            {
+                return FireOnStartingAwaited( onStarting);
+            }
+
+        }
+
+        private async Task FireOnStartingAwaited(Stack<KeyValuePair<Func<object, Task>, object>> onStarting)
+        {
+            try
+            {
+                var count = onStarting.Count;
+                for (var i = 0; i < count; i++)
+                {
+                    var entry = onStarting.Pop();
+                    await entry.Key.Invoke(entry.Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                ReportApplicationError(ex);
+            }
+        }
+
+        protected Task FireOnCompleted()
+        {
+            Stack<KeyValuePair<Func<object, Task>, object>> onCompleted;
+            lock (_onCompletedSync)
+            {
+                onCompleted = _onCompleted;
+                _onCompleted = null;
+            }
+
+            if (onCompleted == null)
+            {
+                return Task.FromResult<object>(null);
+            }
+
+            return FireOnCompletedAwaited(onCompleted);
+        }
+
+        private async Task FireOnCompletedAwaited(Stack<KeyValuePair<Func<object, Task>, object>> onCompleted)
+        {
+            foreach (var entry in onCompleted)
+            {
+                try
+                {
+                    await entry.Key.Invoke(entry.Value);
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
 
@@ -216,15 +335,16 @@ namespace Meteo.Breeze.Server.Simple
             await _httpContext.Response.OutputStream.WriteAsync(data, offset, count, cancellationToken);
         }
 
-        private Task InitializeResponseAsync()
+        private async Task InitializeResponseAsync()
         {
             //fire on start.
             //call reponse starting call back.
+            var startingTask = FireOnStarting();
+
+            await startingTask;
 
             _requestProcessStatus = RequestProcessingStatus.ResponseStarted;
-            return Task.FromResult<object>(null);
         }
-
 
         private void VerifyAndUpdateWrite(int count)
         {

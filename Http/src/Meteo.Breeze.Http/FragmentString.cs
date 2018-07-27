@@ -116,7 +116,7 @@ namespace Meteo.Breeze.Http
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj))
+            if (obj is null)
             {
                 return !HasValue;
             }

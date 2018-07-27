@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Meteo.Breeze.Http.Features;
+using Meteo.Extensions.Logging;
 
 namespace Meteo.Breeze.Server.Simple
 {
@@ -27,15 +28,19 @@ namespace Meteo.Breeze.Server.Simple
         private bool _hasStarted;
         private int _stopping;
         private readonly ITransportFactory _transportFactory;
-        private ServerContext _context;
+        private readonly ServerContext _context;
         private readonly List<ITransport> _transports = new List<ITransport>();
         private TaskCompletionSource<object> _stoppedTcs = new TaskCompletionSource<object>();
 
-        public Server(ServerOptions options, ITransportFactory transportFactory)
+        public Server(ServerOptions options, ITransportFactory transportFactory, IServiceProvider services, ILoggingService logger)
         {
             _listenOption = options.ListenOptions[0];
             _transportFactory = transportFactory;
-            _context = new ServerContext() { ConnectionManager = new HttpConnectionManager(), ServerOptions = options };
+            _context = new ServerContext() {
+                ConnectionManager = new HttpConnectionManager(),
+                ServerOptions = options,
+                Logger = logger,
+                ApplicationServices = services};
         }
 
         public IFeatureCollection Features
@@ -66,10 +71,14 @@ namespace Meteo.Breeze.Server.Simple
                 var connectionDelegate = _listenOption.Build();
                 var transport = _transportFactory.Create(_listenOption, new ConnectionHandler(connectionDelegate));
                 _transports.Add(transport);
+
+                _context.Logger.Log($"Server start listening at {_listenOption.EndPoint}", LoggingLevel.Debug);
+
                 await transport.StartAsync().ConfigureAwait(false);
             }
-            catch
+            catch(Exception e)
             {
+                _context.Logger.Log($"Start server failed", LoggingLevel.Debug, e);
                 Dispose();
                 throw;
             }

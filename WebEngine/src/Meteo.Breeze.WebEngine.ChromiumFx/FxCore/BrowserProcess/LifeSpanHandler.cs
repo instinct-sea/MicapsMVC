@@ -58,7 +58,7 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx.FxCore
 				case CfxWindowOpenDisposition.NewPopup:
 				case CfxWindowOpenDisposition.NewWindow:
 					_currentClient._browserWindow.Browser.LoadURL(e.TargetUrl);
-					_currentClient._browserWindow.CloseBrowser(false);
+					e.WindowInfo.Dispose();
 					e.SetReturnValue(true);
 					break;
 				default:

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Meteo.Common.Types;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -148,30 +149,30 @@ namespace Meteo.Breeze.Http
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns>The resulting QueryString</returns>
-        //public static QueryString Create(IEnumerable<KeyValuePair<string, StringValues>> parameters)
-        //{
-        //    var builder = new StringBuilder();
-        //    bool first = true;
+        public static QueryString Create(IEnumerable<KeyValuePair<string, StringValues>> parameters)
+        {
+            var builder = new StringBuilder();
+            bool first = true;
 
-        //    foreach (var pair in parameters)
-        //    {
-        //        // If nothing in this pair.Values, append null value and continue
-        //        if (StringValues.IsNullOrEmpty(pair.Value))
-        //        {
-        //            AppendKeyValuePair(builder, pair.Key, null, first);
-        //            first = false;
-        //            continue;
-        //        }
-        //        // Otherwise, loop through values in pair.Value
-        //        foreach (var value in pair.Value)
-        //        {
-        //            AppendKeyValuePair(builder, pair.Key, value, first);
-        //            first = false;
-        //        }
-        //    }
+            foreach (var pair in parameters)
+            {
+                // If nothing in this pair.Values, append null value and continue
+                if (StringValues.IsNullOrEmpty(pair.Value))
+                {
+                    AppendKeyValuePair(builder, pair.Key, null, first);
+                    first = false;
+                    continue;
+                }
+                // Otherwise, loop through values in pair.Value
+                foreach (var value in pair.Value)
+                {
+                    AppendKeyValuePair(builder, pair.Key, value, first);
+                    first = false;
+                }
+            }
 
-        //    return new QueryString(builder.ToString());
-        //}
+            return new QueryString(builder.ToString());
+        }
 
         public QueryString Add(QueryString other)
         {
@@ -216,7 +217,7 @@ namespace Meteo.Breeze.Http
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj))
+            if (obj is null)
             {
                 return !HasValue;
             }

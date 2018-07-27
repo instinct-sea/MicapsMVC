@@ -58,8 +58,11 @@
     <Compile Include="Features\IFormFileCollection.cs" />
     <Compile Include="Features\IHttpConnectionFeature.cs" />
     <Compile Include="Features\IHttpRequestFeature.cs" />
+    <Compile Include="Features\IHttpRequestIdentifierFeature.cs" />
+    <Compile Include="Features\IHttpRequestLifetimeFeature.cs" />
     <Compile Include="Features\IHttpResponseFeature.cs" />
     <Compile Include="Features\IHttpSendFileFeature.cs" />
+    <Compile Include="Features\IItemsFeature.cs" />
     <Compile Include="Features\IQueryCollection.cs" />
     <Compile Include="Features\IQueryFeature.cs" />
     <Compile Include="Features\IRequestCookieCollection.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Meteo.Breeze.WebEngine.WinForm;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,7 +23,7 @@ namespace Meteo.Breeze.WebEngine.FormApp
 		public frmMain()
 		{
 			#region SplashScreen·Begin
-			this.Hide();
+			Hide();
 			FSplash = SplashScreen.Begin();
 			FSplash.MsgUpdate("主窗体加载中...");
 			Thread.Sleep(1000);
@@ -32,8 +33,8 @@ namespace Meteo.Breeze.WebEngine.FormApp
 			#region SplashScreen·End
 			SplashScreen.End();
 			FSplash = null;
-			this.Show();
-			this.Activate();
+			Show();
+			BringToFront();
 			#endregion
 		}
 
@@ -45,12 +46,16 @@ namespace Meteo.Breeze.WebEngine.FormApp
 		private void InitializeThis()
 		{
 			FSplash.MsgUpdate("初始化基础数据...");
-			Thread.Sleep(2000);
-			this.Text = Library.ConfigHelper.AppName;
-			this.tssLblVer.Text = string.Format("{1} {0}", Library.ConfigHelper.AppVersion, this.Text);
-			//FSplash.MsgUpdate("初始化日志记录器...");
-			//Thread.Sleep(100);
-			//FLogger = new DawnLogHelper();
+			Thread.Sleep(1000);
+			Text = Library.ConfigHelper.AppName;
+			tssLblVer.Text = string.Format("{1} {0}", Library.ConfigHelper.AppVersion, this.Text);
+
+			btnLoadUrlPlus = new Button();
+			btnLoadUrlPlus.Click += (s, e) =>
+			{
+				btnLoadUrl.PerformClick();
+			};
+			AcceptButton = btnLoadUrlPlus;
 		}
 
 		#endregion
@@ -73,12 +78,13 @@ namespace Meteo.Breeze.WebEngine.FormApp
 		/// <param name="e">传送事件</param>
 		private void frmMain_Shown(object sender, EventArgs e)
 		{
-			//FLogger.Write("程序启动。");
-
-			var webWindow = new WinForm.WebWindow();
+			var webWindow = new WebWindow();
 			webWindow.Dock = DockStyle.Fill;
-			panel1.Controls.Add(webWindow);
+			palBrowserWindow.Controls.Add(webWindow);
 			_currentBrowserWindow = webWindow;
+
+			txtUrlAddress.Text = @"http://news.sina.com.cn";
+			btnLoadUrl.PerformClick();
 		}
 		/// <summary>
 		/// 窗体关闭时
@@ -105,11 +111,6 @@ namespace Meteo.Breeze.WebEngine.FormApp
 		private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			_currentBrowserWindow.BrowserWindow.TryCloseBrowser();
-
-			//FLogger.Write("程序关闭。");
-			this.Dispose();
-			Application.ExitThread();
-			Application.Exit();
 		}
 
 		#endregion
@@ -119,30 +120,38 @@ namespace Meteo.Breeze.WebEngine.FormApp
 		/// <summary>
 		/// 闪屏窗体
 		/// </summary>
-		SplashScreen FSplash;
-		/// <summary>
-		/// 日志记录器
-		/// </summary>
-		//DawnLogHelper FLogger;
+		private SplashScreen FSplash;
 
-		private WinForm.WebWindow _currentBrowserWindow;
+		private WebWindow _currentBrowserWindow;
+
+		private Button btnLoadUrlPlus;
 
 		#endregion
-		
-		
-		private void toolStripButton1_Click(object sender, EventArgs e)
+
+
+		private void btnGoBack_Click(object sender, EventArgs e)
 		{
-			_currentBrowserWindow.BrowserWindow.Browser.LoadURL(toolStripTextBox1.Text.Trim());
+			_currentBrowserWindow?.BrowserWindow?.Browser?.GoBack();
 		}
 
-		private void toolStripButton2_Click(object sender, EventArgs e)
+		private void btnGoForward_Click(object sender, EventArgs e)
+		{
+			_currentBrowserWindow?.BrowserWindow?.Browser?.GoForward();
+		}
+
+		private void btnLoadUrl_Click(object sender, EventArgs e)
+		{
+			_currentBrowserWindow?.BrowserWindow?.Browser?.LoadURL(txtUrlAddress.Text.Trim());
+		}
+
+		private void btnOpenFindbar_Click(object sender, EventArgs e)
 		{
 			_currentBrowserWindow.FindToolbar.Visible = !_currentBrowserWindow.FindToolbar.Visible;
 		}
-		
-		private void toolStripButton3_Click(object sender, EventArgs e)
+
+		private void btnOpenDevtools_Click(object sender, EventArgs e)
 		{
-			_currentBrowserWindow.BrowserWindow.ShowDevTools();
+			_currentBrowserWindow?.BrowserWindow.ShowDevTools();
 		}
 	}
 }

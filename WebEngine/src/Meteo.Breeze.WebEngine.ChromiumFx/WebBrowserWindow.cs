@@ -18,7 +18,6 @@ using Chromium;
 using Chromium.Event;
 using System;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 
 namespace Meteo.Breeze.WebEngine.ChromiumFx
 {
@@ -38,7 +37,6 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 			_currentWidth = defWidth;
 			_currentHeight = defHeight;
 			_currentURL = initialUrl;
-
 			_browserClient = new FxCore.BrowserClient(this);			
 		}
 
@@ -52,10 +50,10 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 		/// 当前浏览器控件高度
 		/// </summary>
 		private int _currentHeight = 0;
-
+		/// <summary>
+		/// 当前浏览器加载的超链接
+		/// </summary>
 		private string _currentURL = "about:blank";
-
-
 		/// <summary>
 		/// 当前的浏览器对象
 		/// </summary>
@@ -68,43 +66,15 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 		/// 当前的浏览器  Win32 窗口句柄号
 		/// </summary>
 		private IntPtr _currentHandler;
-
-		
 		/// <summary>
 		/// 浏览器客户端事件处理对象
 		/// </summary>
 		internal FxCore.BrowserClient _browserClient;
 
 		#endregion
-
-		#region 成员属性
-
-
-
-		#endregion
-
-		#region 成员方法
-
-
-
-		#endregion
-
-
-
-
+				
 		#region 成员处理事件
 
-		/// <summary>
-		/// 
-		/// </summary>
-		//private TaskCompletionSource<bool> BrowserCreatedTCS = new TaskCompletionSource<bool>();
-		/// <summary>
-		/// 
-		/// </summary>
-		//internal Task OnBrowserCreatedAsync()
-		//{
-		//	return BrowserCreatedTCS.Task;
-		//}
 		/// <summary>
 		/// 浏览器创建结果
 		/// </summary>
@@ -114,12 +84,13 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 			_currentBrowser = e.Browser;
 			_currentHost = _currentBrowser.Host;
 			_currentHandler = _currentHost.WindowHandle;
-			OnResize(_currentWidth, _currentHeight);
+
 			Browser = new WebBrowser(_currentBrowser, _currentHost);
 			Browser.LoadURL(_currentURL);
-			IsBrowserCreated = true;
+			
+			OnResize(_currentWidth, _currentHeight);
 
-			//BrowserCreatedTCS.SetResult(true);
+			IsBrowserCreated = true;
 		}
 		/// <summary>
 		/// 浏览器框架内容查找结果
@@ -245,6 +216,8 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 		/// <param name="height">高度</param>
 		public void OnResize(int width, int height)
 		{
+			_currentWidth = width;
+			_currentHeight = height;
 			if (_currentHandler == IntPtr.Zero) return;
 			if (height > 0 && width > 0)
 			{				
@@ -255,7 +228,7 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 			{
 				SetWindowLong(_currentHandler, -16, (int)(WindowStyle.WS_CHILD | WindowStyle.WS_CLIPCHILDREN | WindowStyle.WS_CLIPSIBLINGS | WindowStyle.WS_TABSTOP | WindowStyle.WS_DISABLED));
 				SetWindowPos(_currentHandler, IntPtr.Zero, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_HIDEWINDOW | SWP_ASYNCWINDOWPOS);
-			}
+			}			
 		}
 		/// <summary>
 		/// 取消当前正在进行的所有搜索。

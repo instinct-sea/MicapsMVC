@@ -11,6 +11,7 @@
  
  * ***********************************************/
 using Meteo.Breeze.Http.Features;
+using Meteo.Breeze.Server.Features;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Meteo.Breeze.Server.Simple
@@ -25,16 +27,20 @@ namespace Meteo.Breeze.Server.Simple
     partial class HttpConnection : IFeatureCollection,
         IHttpConnectionFeature,
         IHttpRequestFeature,
-        IHttpResponseFeature
+        IHttpRequestLifetimeFeature,
+        IHttpResponseFeature,
+        IServiceProvidersFeature
     {
         private HashSet<Type> _supportedFeatures = new HashSet<Type>();
         private IHeaderDictionary _requestHeaders;
         private IHeaderDictionary _responseHeaders;
         private HttpListenerContext _httpContext;
+        private IConnectionLifetimeFeature _connectionFeature;
 
         private void InitializeFeatures()
         {
             _httpContext = _context.ConnectionFeatures.Get<HttpListenerContext>();
+            _connectionFeature = _context.ConnectionFeatures.Get<IConnectionLifetimeFeature>();
 
             var interfaces = this.GetType().GetInterfaces();
             foreach (var @interface in interfaces)
@@ -159,6 +165,18 @@ namespace Meteo.Breeze.Server.Simple
 
         bool IHttpResponseFeature.HasStarted => HasResponseStarted;
 
+        public CancellationToken RequestAborted
+        {
+            get => _connectionFeature.ConnectionClosed;
+            set => throw new NotImplementedException();
+        }
+
+        public IServiceProvider RequestServices
+        {
+            get => _context.ServerContext.ApplicationServices;
+            set { }
+        }
+
         public object this[Type key]
         {
             get
@@ -195,12 +213,12 @@ namespace Meteo.Breeze.Server.Simple
 
         void IHttpResponseFeature.OnStarting(Func<object, Task> callback, object state)
         {
-
+            OnStarting(callback, state);
         }
 
         void IHttpResponseFeature.OnCompleted(Func<object, Task> callback, object state)
         {
-
+            OnCompleted(callback, state);
         }
 
         public TFeature Get<TFeature>() where TFeature : class
@@ -208,6 +226,11 @@ namespace Meteo.Breeze.Server.Simple
             if (_supportedFeatures.Contains(typeof(TFeature)))
                 return this as TFeature;
             return null;
+        }
+
+        void IHttpRequestLifetimeFeature.Abort()
+        {
+            this.Abort(null);
         }
     }
 }

@@ -20,6 +20,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,12 +30,25 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Meteo.Breeze.Hosting">
+      <HintPath>..\..\..\Hosting\bin\Meteo.Breeze.Hosting.dll</HintPath>
+    </Reference>
     <Reference Include="Meteo.Common.Types">
       <HintPath>..\..\..\Common\Bin\Meteo.Common.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Meteo.Common.WebUtilities">
+      <HintPath>..\..\..\Common\Bin\Meteo.Common.WebUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Meteo.Extensions.DependencyInjection">
+      <HintPath>..\..\..\Hosting\bin\Meteo.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers">
+      <HintPath>..\..\packages\System.Buffers.4.5.0\ref\net45\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,18 +59,46 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultHttpContext.cs" />
+    <Compile Include="Features\DefaultSessionFeature.cs" />
     <Compile Include="Features\FormFeature.cs" />
+    <Compile Include="Features\FormOptions.cs" />
+    <Compile Include="Features\HttpConnectionFeature.cs" />
+    <Compile Include="Features\HttpRequestFeature.cs" />
+    <Compile Include="Features\HttpRequestIdentifierFeature.cs" />
+    <Compile Include="Features\HttpRequestLifetimeFeature.cs" />
+    <Compile Include="Features\HttpResponseFeature.cs" />
+    <Compile Include="Features\IServiceProviderFeature.cs" />
+    <Compile Include="Features\ItemsFeature.cs" />
+    <Compile Include="Features\QueryFeature.cs" />
+    <Compile Include="Features\RequestCookiesFeature.cs" />
+    <Compile Include="Features\ResponseCookiesFeature.cs" />
+    <Compile Include="Features\ServiceProvidersFeature.cs" />
     <Compile Include="FormCollection.cs" />
+    <Compile Include="HeaderDictionary.cs" />
     <Compile Include="HttpContextAccessor.cs" />
     <Compile Include="HttpContextFactory.cs" />
+    <Compile Include="HttpServicesExtensions.cs" />
+    <Compile Include="Internal\BufferedFormFile.cs" />
     <Compile Include="Internal\Constants.cs" />
+    <Compile Include="Internal\DefaultConnectionInfo.cs" />
     <Compile Include="Internal\DefaultHttpRequest.cs" />
     <Compile Include="Internal\DefaultHttpResponse.cs" />
+    <Compile Include="Internal\FormFile.cs" />
+    <Compile Include="Internal\RequestCookieCollection.cs" />
+    <Compile Include="Internal\ResponseCookies.cs" />
+    <Compile Include="Internal\StreamFormFile.cs" />
+    <Compile Include="Internal\FormFileCollection.cs" />
+    <Compile Include="Internal\QueryCollection.cs" />
+    <Compile Include="Internal\ReferenceReadStream.cs" />
     <Compile Include="MiddlewareFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Meteo.Breeze.Http.Headers\Meteo.Breeze.Http.Headers.csproj">
+      <Project>{A989AD64-E3FA-4CC6-9605-B68930C386DE}</Project>
+      <Name>Meteo.Breeze.Http.Headers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Meteo.Breeze.Http\Meteo.Breeze.Http.csproj">
       <Project>{5d29baef-9835-46d4-a8dc-8c0e9d39b218}</Project>
       <Name>Meteo.Breeze.Http</Name>

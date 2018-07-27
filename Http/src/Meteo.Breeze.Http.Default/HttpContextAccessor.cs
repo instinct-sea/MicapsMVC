@@ -22,6 +22,13 @@ namespace Meteo.Breeze.Http.Default
 {
     class HttpContextAccessor : IHttpContextAccessor
     {
+        public static readonly IHttpContextAccessor Null = new NullAccessor();
+
+        class NullAccessor : IHttpContextAccessor
+        {
+            public HttpContext HttpContext { get => null; set { } }
+        }
+
         private static readonly string LogicalDataKey = "__HttpContext_Current__" + AppDomain.CurrentDomain.Id;
         public HttpContext HttpContext
         {

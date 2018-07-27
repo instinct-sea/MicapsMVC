@@ -18,6 +18,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Meteo.Extensions.Logging;
 
 namespace Meteo.Breeze.Server.Simple
 {
@@ -40,10 +41,13 @@ namespace Meteo.Breeze.Server.Simple
             {
                 ConnectionId = connectionContext.ConnectionId,
                 ConnectionContext = connectionContext,
+                ServerContext = _serverContext,
                 HttpConnectionId = connectionContext.ConnectionId.GetHashCode(),
                 Protocols = _protocolVersion,
                 ConnectionFeatures = connectionContext.Features,
             };
+
+            _serverContext.Logger.Log($"On http connection, id {connectionContext.ConnectionId}", LoggingLevel.Debug);
 
             var httpConnectionFeature = connectionContext.Features.Get<IHttpConnectionFeature>();
 
@@ -51,6 +55,9 @@ namespace Meteo.Breeze.Server.Simple
             {
                 httpConnectionContext.RemoteEndPoint = new IPEndPoint(httpConnectionFeature.RemoteAddress, httpConnectionFeature.RemotePort);
                 httpConnectionContext.LocalEndPoint = new IPEndPoint(httpConnectionFeature.LocalAddress, httpConnectionFeature.LocalPort);
+
+                _serverContext.Logger.Log($"Remote address: {httpConnectionContext.RemoteEndPoint}", LoggingLevel.Debug);
+                _serverContext.Logger.Log($"local address: {httpConnectionContext.LocalEndPoint}", LoggingLevel.Debug);
             }
 
             var connection = new HttpConnection(httpConnectionContext);

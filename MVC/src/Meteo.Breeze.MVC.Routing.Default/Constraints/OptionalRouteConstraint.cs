@@ -5,7 +5,7 @@ using Meteo.Breeze.Http;
 using Meteo.Breeze.MVC.Routing;
 using System;
 
-namespace Meteo.Breeze.MVC.Routing.Default
+namespace Meteo.Breeze.MVC.Routing.Default.Constraints
 {
     /// <summary>
     /// Defines a constraint on an optional parameter. If the parameter is present, then it is constrained by InnerConstraint. 

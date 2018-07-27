@@ -17,7 +17,6 @@
 using Chromium;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Meteo.Breeze.WebEngine.ChromiumFx
 {
@@ -44,11 +43,9 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 			if (!Bootstrapper.Current.IsStarted)
 			{
 				Bootstrapper.Current.Start();
-			}
-
+			}			
 
 			var browserWindow = new WebBrowserWindow(defWidth, defHeight);
-			//await To doing;
 
 			var windowInfo = new CfxWindowInfo();
 			windowInfo.SetAsDisabledChild(formHandle);
@@ -59,11 +56,6 @@ namespace Meteo.Breeze.WebEngine.ChromiumFx
 			{
 				throw new WebEngineException("对不起！浏览器窗口创建失败，请确认所有配置正确后重试。");
 			}
-
-			//browserWindow.OnBrowserCreatedAsync();
-
-			//browserWindow.Browser.LoadURL(initialUrl);
-
 
 			_browsers.Add(new WebBrowserReference(browserWindow));
 

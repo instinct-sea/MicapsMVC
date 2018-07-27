@@ -25,6 +25,7 @@ namespace Meteo.Breeze.Server.Simple
         public long HttpConnectionId { get; set; }
         public HttpVersion Protocols { get; set; }
         public ConnectionContext ConnectionContext { get; set; }
+        internal ServerContext ServerContext { get; set; }
         public IFeatureCollection ConnectionFeatures { get; set; }
         public IPEndPoint LocalEndPoint { get; set; }
         public IPEndPoint RemoteEndPoint { get; set; }

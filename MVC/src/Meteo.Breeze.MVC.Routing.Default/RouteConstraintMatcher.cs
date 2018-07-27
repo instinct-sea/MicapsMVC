@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using Meteo.Breeze.Http;
+using Meteo.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 
@@ -14,7 +15,8 @@ namespace Meteo.Breeze.MVC.Routing.Default
             RouteValueDictionary routeValues,
             HttpContext httpContext,
             IRouter route,
-            RouteDirection routeDirection)
+            RouteDirection routeDirection,
+            ILogger logger)
         {
             if (routeValues == null)
             {

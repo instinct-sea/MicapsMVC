@@ -43,8 +43,9 @@
     <Reference Include="Meteo.Breeze.WebEngine">
       <HintPath>..\..\Bin\Meteo.Breeze.WebEngine.dll</HintPath>
     </Reference>
-    <Reference Include="Meteo.DependencyInjection">
-      <HintPath>..\..\..\Hosting\bin\Meteo.DependencyInjection.dll</HintPath>
+    <Reference Include="Meteo.Extensions.DependencyInjection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b12df212a1e863dc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Hosting\bin\Meteo.Extensions.DependencyInjection.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

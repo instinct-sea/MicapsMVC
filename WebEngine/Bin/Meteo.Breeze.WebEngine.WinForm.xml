@@ -42,6 +42,32 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:Meteo.Breeze.WebEngine.WinForm.ImageProvider.CMALogo">
+            <summary>
+            我是一个LOGO
+            </summary>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.ImageProvider.CMALogo.Create">
+            <summary>
+            创建
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.ImageProvider.ConvertToIcon(System.Drawing.Image,System.Boolean)">
+            <summary>
+            转换Image为Icon
+            </summary>
+            <param name="image">要转换为图标的Image对象</param>
+            <param name="nullTonull">当image为null时是否返回null。false则抛空引用异常</param>
+            <exception cref="T:System.ArgumentNullException" />
+        </member>
+        <member name="M:Meteo.Breeze.WebEngine.WinForm.ImageProvider.BitmapToBytes(System.Drawing.Bitmap)">
+            <summary>
+            图片转 byte[]
+            </summary>
+            <param name="Bitmap"></param>
+            <returns></returns>
+        </member>
         <member name="T:Meteo.Breeze.WebEngine.WinForm.FindToolbar">
             <summary>
             浏览器框架内容查找工具栏
@@ -257,11 +283,6 @@
         <member name="M:Meteo.Breeze.WebEngine.WinForm.WebWindow.ResizeWebWindow">
             <summary>
             浏览器窗体大小改变事件
-            </summary>
-        </member>
-        <member name="F:Meteo.Breeze.WebEngine.WinForm.WebWindow._currentBrowserWindow">
-            <summary>
-            当前的 Web Browser Window
             </summary>
         </member>
         <member name="P:Meteo.Breeze.WebEngine.WinForm.WebWindow.BrowserWindow">

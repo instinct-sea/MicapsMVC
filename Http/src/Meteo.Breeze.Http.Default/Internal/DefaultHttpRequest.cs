@@ -17,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Meteo.Breeze.Http.Default.Features;
 using Meteo.Breeze.Http.Features;
 
 namespace Meteo.Breeze.Http.Default.Internal
@@ -41,7 +42,7 @@ namespace Meteo.Breeze.Http.Default.Internal
 
         private IHttpRequestFeature HttpRequestFeature => _cachedFeatures.Request;
 
-        private void Initialize(HttpContext context)
+        public virtual void Initialize(HttpContext context)
         {
             _cachedFeatures.Request = context.Features.Get<IHttpRequestFeature>() ?? throw new InvalidOperationException("Context doesn't contains a http request feature.");
             _cachedFeatures.Query = context.Features.Get<IQueryFeature>() ?? InitializeQueryFeature(context);
@@ -49,22 +50,30 @@ namespace Meteo.Breeze.Http.Default.Internal
             _cachedFeatures.Cookies = context.Features.Get<IRequestCookiesFeature>() ?? InitializeCookiesFeature(context);
         }
 
+        public virtual void Uninitialize()
+        {
+            _cachedFeatures.Request = null;
+            _cachedFeatures.Query = null;
+            _cachedFeatures.Form = null;
+            _cachedFeatures.Cookies = null;
+        }
+
         protected virtual IFormFeature InitializeFormFeature(HttpContext context)
         {
-            throw new NotImplementedException();
+            return new FormFeature(this);
         }
 
         protected virtual IQueryFeature InitializeQueryFeature(HttpContext context)
         {
-            throw new NotImplementedException();
+            return new QueryFeature(context.Features);
         }
 
         protected virtual IRequestCookiesFeature InitializeCookiesFeature(HttpContext context)
         {
-            throw new NotImplementedException();
+            return new RequestCookiesFeature(context.Features);
         }
 
-        public override Task<IFormCollection> ReadFormAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public override Task<IFormCollection> ReadFormAsync(CancellationToken cancellationToken = default)
         {
             if (_cachedFeatures.Form == null)
                 return Task.FromResult<IFormCollection>(null);

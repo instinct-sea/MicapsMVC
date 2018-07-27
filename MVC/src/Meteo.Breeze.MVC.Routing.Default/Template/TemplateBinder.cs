@@ -1,13 +1,14 @@
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using Meteo.Breeze.MVC.Encodings;
+using Meteo.Breeze.MVC.Routing.Default.Internal;
+using Meteo.Breeze.MVC.Routing.Default.Pool;
 using System;
 using System.Collections;
 using System.Diagnostics;
 using System.Globalization;
-using Meteo.Breeze.MVC.Routing.Default.Internal;
-using Meteo.Breeze.MVC.Routing.Default.Pool;
-using Meteo.Breeze.MVC.Routing.Default.Encoding;
+
 namespace Meteo.Breeze.MVC.Routing.Default.Template
 {
     public class TemplateBinder

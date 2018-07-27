@@ -21,9 +21,8 @@ using System.Threading.Tasks;
 
 namespace Meteo.Common.WebUtilities
 {
-    static class StreamExtensions
+    public static class StreamExtensions
     {
-
         private const int _maxReadBufferSize = 1024 * 4;
 
         public static Task ConsumeAsync(this Stream stream, CancellationToken cancellationToken)
@@ -60,6 +59,48 @@ namespace Meteo.Common.WebUtilities
             {
                 bytePool.Return(buffer);
             }
+        }
+
+        public static Task<byte[]> ReadAllBytesAsync(this Stream stream, CancellationToken cancellationToken)
+        {
+            return stream.ReadAllBytesAsync(ArrayPool<byte>.Shared, null, cancellationToken);
+        }
+
+        public static Task<byte[]> ReadAllBytesAsync(this Stream stream, long? limit, CancellationToken cancellationToken)
+        {
+            return stream.ReadAllBytesAsync(ArrayPool<byte>.Shared, limit, cancellationToken);
+        }
+
+        public static async Task<byte[]> ReadAllBytesAsync(this Stream stream, ArrayPool<byte> bytePool, long? limit, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var buffer = bytePool.Rent(_maxReadBufferSize);
+            List<byte> result = new List<byte>(_maxReadBufferSize);
+            long total = 0;
+            try
+            {
+                var read = await stream.ReadAsync(buffer, 0, buffer.Length, cancellationToken);
+                while (read > 0)
+                {
+                    //append buffer.
+                    for (int i = 0; i < read; i++)
+                        result.Add(buffer[i]);
+
+                    // Not all streams support cancellation directly.
+                    cancellationToken.ThrowIfCancellationRequested();
+                    if (limit.HasValue && limit.Value - total < read)
+                    {
+                        throw new InvalidDataException($"The stream exceeded the data limit {limit.Value}.");
+                    }
+                    total += read;
+                    read = await stream.ReadAsync(buffer, 0, buffer.Length, cancellationToken);
+                }
+            }
+            finally
+            {
+                bytePool.Return(buffer);
+            }
+            return result.ToArray();
         }
 
     }
